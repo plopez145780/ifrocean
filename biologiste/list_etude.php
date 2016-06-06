@@ -15,18 +15,10 @@ and open the template in the editor.
         <h2>Liste des etudes</h2>
         
         <?php
-		// Connexion à la base de données
-		try
-		{
-			$bdd = new PDO('mysql:host=localhost:3306;dbname=ifrocean;charset=utf8', 'root', '');
-		}
-		catch(Exception $e)
-		{
-		        die('Erreur : '.$e->getMessage());
-		}
-		// On récupère les 5 derniers billets
-		$req = $bdd->query('SELECT idEtude, nomEtude, nomVille, superficie, DATE_FORMAT(datePrelevement, \'%d/%m/%Y\') AS datePrelevement_fr, finEtude FROM etudes');
-
+                $requete = 'SELECT idEtude, nomEtude, nomVille, superficie, DATE_FORMAT(datePrelevement, \'%d/%m/%Y\') AS datePrelevement_fr, finEtude FROM etudes';
+		include_once '../bdd.php';
+                
+                
 		// Affichage de chaque message
 		while ($donnees = $req->fetch())
 		{
