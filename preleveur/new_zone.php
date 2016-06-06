@@ -5,7 +5,7 @@
     </head>
     <body>
         <form method="post" action="08-POST.php">
-            Nom : <input type="text" name="nom">
+            Nom de la zone: <input type="text" name="nom">
             <br>
             Latitude A :  <input type="text" name="Latitude A">
             <br>
@@ -20,7 +20,7 @@
 			Longitude C :  <input type="text" name="Longitude C">
             <br>
 			 Latitude D :  <input type="text" name="Latitude D ">
-			 <br>
+            <br>
 			 Longitude D :  <input type="text" name="Longitude D">
             <br>
 			
