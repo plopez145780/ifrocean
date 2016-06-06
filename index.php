@@ -1,4 +1,4 @@
-<?php include("header.php"); ?>
+<?php include("header.inc.php"); ?>
 
 <!-- Le corps -->
 
@@ -16,5 +16,5 @@
 </section>
 
 <!-- Le pied de page -->
-<?php include("footer.php"); ?>
+<?php include("footer.inc.php"); ?>
     

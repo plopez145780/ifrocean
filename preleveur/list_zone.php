@@ -1,10 +1,12 @@
-<?php include("../header.php"); ?>
-
-<?php include("../menus.php"); ?>
-
 <?php 
+    $title = "Liste des zones";
+    include("../header.inc.php"); 
+    $requete = 'SELECT idEtude, nomEtude, nomVille, superficie, DATE_FORMAT(datePrelevement, \'%d/%m/%Y\') AS datePrelevement_fr, finEtude FROM etudes';
+    include_once '../bdd.php';
+
 $nomEtude = "nom de l'etude";
-$tabZone = array("zoneA","zoneB","zoneC"); ?>
+
+?>
 
 
 <!-- Le corps -->
@@ -15,9 +17,8 @@ $tabZone = array("zoneA","zoneB","zoneC"); ?>
         <tr>
             <th>Nom de zone</th>
         </tr>
-        <?php 
-        foreach ($tabZone as $keyZone => $valueZone) {
-            echo "<tr><td>".$valueZone."</td></tr>";
+        <?php while ($donnees = $req->fetch()){
+            echo "<tr><td>".$donnees['nomEtude']."</td></tr>";
         }
         ?>
     </table>
@@ -27,5 +28,5 @@ $tabZone = array("zoneA","zoneB","zoneC"); ?>
 </section>
 
 <!-- Le pied de page -->
-<?php include("../footer.php"); ?>
+<?php include("../footer.inc.php"); ?>
     

@@ -8,24 +8,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <title><?php echo "titre a adapter" ?></title>
+    <title><?php echo $title ?></title>
     
    
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <script src="javascript.js"></script>
+    <link href="/ifrocean/vendor/ifrocean/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/ifrocean/vendor/ifrocean/js/javascript.js"></script>
     
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/ifrocean/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="vendor/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="/ifrocean/vendor/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="vendor/ifrocean/css/starter-template.css" rel="stylesheet">
+    <link href="/ifrocean/vendor/ifrocean/css/starter-template.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="vendor/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+    <!--[if lt IE 9]><script src="/ifrocean/vendor/bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/ifrocean/vendor/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -58,8 +58,3 @@
     </nav>
     </header>
     <div class="container">
-
-      
-
-    
-
