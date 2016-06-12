@@ -1,18 +1,17 @@
 <?php include("header.inc.php"); ?>
 
 <!-- Le corps -->
-
-<div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-<section>
-    <h1>Mon super site</h1>
+<section class="page-header">
+    <div class="starter-template">
+        <h1>Ifrocean - Suivi des annélides des estrans sablonneux de L’Ouest Atlantique</h1>
+        <p class="lead">Recensement des espèces de la zone intertidale du littoral Nord-Ouest de la France sur les plages de sables</p>
+    </div>
     
-    <p>
-        Bienvenue sur mon super site !<br />
-        Vous allez adorer ici, c'est un site génial qui va parler de... euh... Je cherche encore un peu le thème de mon site. :-D
-    </p>
+    
+    <a href="./biologiste/list_etude.php" class="btn btn-lg btn-default">Biologiste</a>
+    
+    <a href="./preleveur/list_etude.php" class="btn btn-lg btn-default">Préleveur</a>
+    
 </section>
 
 <!-- Le pied de page -->

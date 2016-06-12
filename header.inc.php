@@ -45,13 +45,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Ifrocean</a>
+          <a class="navbar-brand" href="/ifrocean/">Ifrocean</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Accueil</a></li>
-            <li><a href="#about">A Propos</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li <?php if($_SERVER['REQUEST_URI'] === '/ifrocean/' OR $_SERVER['REQUEST_URI'] == '/ifrocean/index.php'){echo 'class="active"';}?> ><a href="/ifrocean/">Accueil</a></li>
+            <li <?php if($_SERVER['REQUEST_URI'] === '/ifrocean/apropos.php'){echo 'class="active"';}?> ><a href="/ifrocean/apropos.php">A Propos</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
