@@ -4,7 +4,7 @@
  *
  * @author Pierre Lopez
  */
-class Config {
+class ConfigBDD {
     /*public $servername = "localhost:3306";
     public $dbname = "ifrocean";
     public $username = "root";
@@ -12,6 +12,6 @@ class Config {
     
     const SERVERNAME = "localhost:3306";
     const DBNAME = "ifrocean";
-    const USERNAME ="root";
-    const PASSWORD = "";
+    const USERNAME ="ifrocean";
+    const PASSWORD = "ifrocean";
 }

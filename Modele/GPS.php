@@ -10,12 +10,14 @@ class GPS {
     private $longitude;
     
     //CONSTRUCTEURS
-    /*public function __construct($latitude, $longitude) {
-            $this->latitude = $latitude;
-            $this->longitude = $longitude;
+    /*public function __construct0() {
+
     }*/
-    public function __construct($direction,$degre,$minute,$seconde, 
-                                $direction2,$degre2,$minute2,$seconde2) {
+    /*public function __construct($lat_decimal, $long_decimal) {
+            $this->latitude = $lat_decimal;
+            $this->longitude = $long_decimal;
+    }*/
+    public function __construct($direction,$degre,$minute,$seconde, $direction2,$degre2,$minute2,$seconde2) {
         $this->latitude = $this->sexagesimalToDecimal($direction, $degre, $minute, $seconde);
         $this->longitude = $this->sexagesimalToDecimal($direction2, $degre2, $minute2, $seconde2);
     }
@@ -40,7 +42,9 @@ class GPS {
      * Renvoi la distance en mètres
      */
     public function calculerDistance(GPS $pointGPS) {
+        //6372.795477598
         $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
+        
         $rlo1 = deg2rad($this->longitude);
         $rla1 = deg2rad($this->latitude);
         $rlo2 = deg2rad($pointGPS->longitude);
