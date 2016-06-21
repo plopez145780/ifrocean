@@ -16,86 +16,135 @@
 <section>
     <h1>Création d'une nouvelle zone - <?php echo $nomEtude ?></h1>
 <!-- Formulaire POST-->
-<form method="POST" action="list_zone.php?id_etude=<?php echo $idEtude ?>" class="form-horizontal">
+<form method="POST" action="post_new_zone.php?id_etude=<?php echo $idEtude ?>" class="form-horizontal">
     <div class="form-group">
         <label for="inputNomZone" class="col-sm-2 control-label">Nom de la zone</label>
-        <div class="col-sm-10">
+        <div class="col-sm-5">
             <input type="text" class="form-control" id="inputNomZone" name="inputNomZone" placeholder="Zone">
         </div>
     </div>
     <div class="form-group">
         <label for="inputLatA" class="col-sm-2 control-label">Latitude A</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLatA" name="inputLatA" placeholder="Latitude 1er point">
+        <div class="col-sm-2">
+            <input type="number" step="1" required min="0" max="90" class="form-control" id="latdegresA" name="latdegresA" placeholder="Degrès°">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="latminutesA" name="latminutesA" placeholder="'Minutes'">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="latsecondesA" name="latsecondesA" placeholder="Secondes">
+            <input type="number" step="1" required min="0" max="99" class="form-control" id="latcentiemesA" name="latcentiemesA" placeholder="Centiemes">
+            <input type="radio" name="dirLat A"
+                 <?php   if (isset($gender) && $gender=="nord") echo "checked";?>
+                      value ='nord'>  Nord
+                    <input type="radio" name="dirLat A"
+                   <?php if (isset($gender) && $gender=="sud") echo "checked";?>
+                       Value ='sud'> Sud
         </div>
     </div>
-    <div class="form-group">
+   <div class="form-group">
         <label for="inputLongA" class="col-sm-2 control-label">Longitude A</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLongA" name="inputLongA" placeholder="Longitude 1er point">
+        <div class="col-sm-2">
+            <input type="number" step="1" required min="0" max="180" class="form-control" id="longdegresA" name="longdegresA" placeholder="Degrès°">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="longminutesA" name="longminutesA" placeholder='Minutes"'>
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="longsecondesA" name="longsecondesA" placeholder="Secondes'">
+            <input type="number" step="1" required min="0" max="99" class="form-control" id="longsecondesA" name="longcentiemesA" placeholder="Centiemes">
+            <input type="radio" name="dirLong A"
+                 <?php   if (isset($gender) && $gender=="est") echo "checked";?>
+                      value ='est'>  Est
+                    <input type="radio" name="dirLong A"
+                   <?php if (isset($gender) && $gender=="ouest") echo "checked";?>
+                       Value ='ouest'> Ouest
         </div>
     </div>
-    <div class="form-group">
+     <div class="form-group">
         <label for="inputLatB" class="col-sm-2 control-label">Latitude B</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLatB" name="inputLatB" placeholder="Latitude 2eme point">
+        <div class="col-sm-2">
+             <input type="number" step="1" required min="0" max="90" class="form-control" id="latdegresB" name="latdegresB" placeholder="Degrès°">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="latminutesB" name="latminutesB" placeholder="'Minutes'">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="latsecondesB" name="latsecondesB" placeholder="Secondes">
+            <input type="number" step="1" required min="0" max="99" class="form-control" id="latcentiemesB" name="latcentiemesB" placeholder="Centiemes">
+            <input type="radio" name="dirLat B"
+                 <?php   if (isset($gender) && $gender=="nord") echo "checked";?>
+                      value ='nord'>  Nord
+                    <input type="radio" name="dirLat B"
+                   <?php if (isset($gender) && $gender=="sud") echo "checked";?>
+                       Value ='sud'> Sud
         </div>
     </div>
     <div class="form-group">
         <label for="inputLongB" class="col-sm-2 control-label">Longitude B</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLongB" name="inputLongB" placeholder="Longitude 2eme point">
+        <div class="col-sm-2">
+            <input type="number" step="1" required min="0" max="180" class="form-control" id="longdegresB" name="longdegresB" placeholder="Degrès°">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="longminutesB" name="longminutesB" placeholder='Minutes"'>
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="longsecondesB" name="longsecondesB" placeholder="Secondes'">
+            <input type="number" step="1" required min="0" max="99" class="form-control" id="longsecondesB" name="longcentiemesB" placeholder="Centiemes">
+            <input type="radio" name="dirLong B"
+                 <?php   if (isset($gender) && $gender=="est") echo "checked";?>
+                      value ='est'>  Est
+                    <input type="radio" name="dirLong B"
+                   <?php if (isset($gender) && $gender=="ouest") echo "checked";?>
+                       Value ='ouest'> Ouest
         </div>
     </div>
     
-    <div class="form-group">
+     <div class="form-group">
         <label for="inputLatC" class="col-sm-2 control-label">Latitude C</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLatC" name="inputLatC" placeholder="Latitude 3eme point">
+        <div class="col-sm-2">
+            <input type="number" step="1" required min="0" max="90" class="form-control" id="latdegresC" name="latdegresC" placeholder="Degrès°">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="latminutesC" name="latminutesC" placeholder="'Minutes'">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="latsecondesC" name="latsecondesC" placeholder="Secondes">
+            <input type="number" step="1" required min="0" max="99" class="form-control" id="latcentiemesC" name="latcentiemesC" placeholder="Centiemes">
+            <input type="radio" name="dirLat C"
+                 <?php   if (isset($gender) && $gender=="nord") echo "checked";?>
+                      value ='nord'>  Nord
+                    <input type="radio" name="dirLat C"
+                   <?php if (isset($gender) && $gender=="sud") echo "checked";?>
+                       Value ='sud'> Sud
         </div>
     </div>
     <div class="form-group">
         <label for="inputLongC" class="col-sm-2 control-label">Longitude C</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLongC" name="inputLongC" placeholder="Longitude 3eme point">
+        <div class="col-sm-2">
+            <input type="number" step="1" required min="0" max="180" class="form-control" id="longdegresC" name="longdegresC" placeholder="Degrès°">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="longminutesC" name="longminutesC" placeholder='Minutes"'>
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="longsecondesC" name="longsecondesC" placeholder="Secondes'">
+            <input type="number" step="1" required min="0" max="99" class="form-control" id="longsecondesC" name="longcentiemesC" placeholder="Centiemes">
+            <input type="radio" name="dirLong C"
+                 <?php   if (isset($gender) && $gender=="est") echo "checked";?>
+                      value ='est'>  Est
+                    <input type="radio" name="dirLong C"
+                   <?php if (isset($gender) && $gender=="ouest") echo "checked";?>
+                       Value ='ouest'> Ouest
         </div>
     </div>
-    <div class="form-group">
+     <div class="form-group">
         <label for="inputLatD" class="col-sm-2 control-label">Latitude D</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLatD" name="inputLatD" placeholder="Latitude 4eme point">
+        <div class="col-sm-2">
+            <input type="number" step="1" required min="0" max="90" class="form-control" id="latdegresD" name="latdegresD" placeholder="Degrès°">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="latminutesD" name="latminutesD" placeholder="'Minutes'">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="latsecondesD" name="latsecondesD" placeholder="Secondes">
+            <input type="number" step="1" required min="0" max="99" class="form-control" id="latcentiemesD" name="latcentiemesD" placeholder="Centiemes">
+            <input type="radio" name="dirLat D"
+                 <?php   if (isset($gender) && $gender=="nord") echo "checked";?>
+                      value ='nord'>  Nord
+                    <input type="radio" name="dirLat D"
+                   <?php if (isset($gender) && $gender=="sud") echo "checked";?>
+                       Value ='sud'> Sud
         </div>
     </div>
     <div class="form-group">
         <label for="inputLongD" class="col-sm-2 control-label">Longitude D</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputLongD" name="inputLongD" placeholder="Longitude 4eme point">
+        <div class="col-sm-2">
+            <input type="number" step="1" required min="0" max="180" class="form-control" id="longdegresD" name="longdegresD" placeholder="Degrès°">
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="longminutesD" name="longminutesD" placeholder='Minutes"'>
+            <input type="number" step="1" required min="0" max="60" class="form-control" id="longsecondesD" name="longsecondesD" placeholder="Secondes'">
+            <input type="number" step="1" required min="0" max="99" class="form-control" id="longsecondesD" name="longcentiemesD" placeholder="Centiemes">
+            <input type="radio" name="dirlong D"
+                 <?php   if (isset($gender) && $gender=="est") echo "checked";?>
+                      value ='est'>  Est
+                    <input type="radio" name="dirlong D"
+                   <?php if (isset($gender) && $gender=="ouest") echo "checked";?>
+                       Value ='ouest'> Ouest
         </div>
     </div>
-    <button type="submit" class="btn btn-lg btn-default">Valider</button>
-    
-    <?php 
-    $inputNomZone = $_POST['inputNomZone'];
-    $inputLatA = $_POST['inputLatA'];
-    $inputLongA = $_POST['inputLongA'];
-    $inputLatB = $_POST['inputLatB'];
-    $inputLongB = $_POST['inputLongB'];
-    $inputLatC = $_POST['inputLatC'];
-    $inputLongC = $_POST['inputLongC'];
-    $inputLatD = $_POST['inputLatD'];
-    $inputLongD = $_POST['inputLongD'];
-    
-    
-    $requete = "INSERT INTO `zones`(`idZone`, `nomZone`, `latPointA`, "
-            . "`longPointA`, `latPointB`, `longPointB`, `latPointC`, `longPointC`, `latPointD`, "
-            . "`longPointD`, `surface`, `finZone`, `idEtude`) "
-            . "VALUES (........,$inputNomZone,$inputLatA,$inputLongA,$inputLatB,$inputLongB,"
-            . "$inputLatC,$inputLongC,$inputLatD,$inputLongD,"
-            . "[value-11],0,$idEtude)"
-    ?>
-    
-    
-    
+    <button type="submit" class="btn btn-lg btn-default">Valider</button>    
 </form>
 </section>
 
