@@ -54,6 +54,16 @@ class Etude extends Modele {
         $req->execute();
     }
     public function addEtude() {
+        $bdd = new Modele();
+        $pdo = $bdd->getConnection();
+        $req = $pdo->prepare("INSERT INTO etudes(idEtude, nomEtude, ville, superficie, date, validation) "
+                . "VALUES(NULL, :nom, :ville, :superficie, :date, :validation)");
+        $req->bindParam(":nom", $this->nom);
+        $req->bindParam(":ville", $this->ville);
+        $req->bindParam(":superficie", $this->superficie);
+        $req->bindParam(":date", $this->datePrelev);
+        $req->bindParam(":validation", $this->finEtude);
+        $req->execute();
         
     }
     public function updateEtude() {

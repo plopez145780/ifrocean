@@ -14,7 +14,10 @@
         require_once 'Vue/vueViewEtude.php';
     }*/
     function addEtude() {
-        require_once 'Vue/vueListEtude.php';//afficher un encar qui dit ajouté, les chang d'ajout son en bas
+        require_once 'Vue/vueAddEtude.php';//afficher un encar qui dit ajouté, les chang d'ajout son en bas
+    }
+    function traitementAddEtude($param_post) {
+        require_once 'Vue/traitementAddEtude.php';//afficher un encar qui dit ajouté, les chang d'ajout son en bas
     }
     
     function deleteEtude() {

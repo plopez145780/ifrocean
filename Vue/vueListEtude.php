@@ -7,7 +7,7 @@ $bdd = new Modele();
 $etudes = $bdd->getListeEtude();
 
 
-//var_dump($etude);
+//var_dump($etudes);
 
 
 ?>
@@ -15,6 +15,9 @@ $etudes = $bdd->getListeEtude();
 <!-- Le corps -->
 <?php ob_start(); ?>
 <h1>Liste des Etudes</h1>
+
+<a href="/ifrocean/index.php?action=add_etude" class="btn btn-default">Ajouter</a>
+
 <table class="table table-striped">
     <tr>
         <th>Nom des études</th>

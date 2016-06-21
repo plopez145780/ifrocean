@@ -13,5 +13,5 @@ class ConfigBDD {
     const SERVERNAME = "localhost:3306";
     const DBNAME = "ifrocean";
     const USERNAME ="ifrocean";
-    const PASSWORD = "ifrocean";
+    const PASSWORD = "poec";
 }
