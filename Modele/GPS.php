@@ -10,33 +10,23 @@ class GPS {
     private $longitude;
     
     //CONSTRUCTEURS
-    /*public function __construct0() {
-
-    }*/
-    /*public function __construct($lat_decimal, $long_decimal) {
-            $this->latitude = $lat_decimal;
-            $this->longitude = $long_decimal;
-    }*/
-    public function __construct($direction,$degre,$minute,$seconde, $direction2,$degre2,$minute2,$seconde2) {
-        $this->latitude = $this->sexagesimalToDecimal($direction, $degre, $minute, $seconde);
-        $this->longitude = $this->sexagesimalToDecimal($direction2, $degre2, $minute2, $seconde2);
+    public function __construct($directionNS, $degresLat, $minutesLat, $secondesLat, $centiemesLat, $directionEO, $degresLong, $minutesLong, $secondeSLong, $centiemesLong) {
+        $this->latitude = $this->sexagesimalToDecimal($directionNS, $degresLat, $minutesLat, $secondesLat, $centiemesLat);
+        $this->longitude = $this->sexagesimalToDecimal($directionEO, $degresLong, $minutesLong, $secondeSLong, $centiemesLong);
     }
-    
-    
+
     //GETTER et SETTER
     public function getLongitude() {return $this->longitude;}
     public function getLatitude() {return $this->latitude;}
-
     
     //METHODES
-    private function sexagesimalToDecimal($direction,$degre,$minute,$seconde){
-        $coordDeci = $degre + ($minute/60) + ($seconde/3600);
-        if($direction == "S" || $direction == "O"){
+    private function sexagesimalToDecimal($direction,$degres,$minutes,$secondes,$centiemes){
+        $coordDeci = $degres + ($minutes/60) + (($secondes+($centiemes/100))/3600);
+        if($direction == "sud" || $direction == "ouest"){
             $coordDeci *= -1;
         }
         return $coordDeci;
     }
-
 
     /**
      * Renvoi la distance en mètres

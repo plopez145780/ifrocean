@@ -31,11 +31,12 @@
             echo "----------------------------";
             
             
-            $coord1 = new GPS("N",47,13,4.012,"O",1,33,17.573);
-            $coord2 = new GPS("N",47,13,3.875,"O",1,33,8.202);
+            $coord1 = new GPS("N",47,13,4,012,"O",1,33,17,573);
             
-            echo "distance :";
-            echo $coord1->calculerDistance($coord2);
+            //$coord2 = new GPS("N",47,13,3.875,"O",1,33,8.202);
+            
+            //echo "distance :";
+            //echo $coord1->calculerDistance($coord2);
             
             /*
             $lat3 = 48.80686346108517;
