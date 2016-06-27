@@ -24,25 +24,26 @@
         require_once 'Vue/vueAddEtude.php';//afficher un encar qui dit ajouté, les chang d'ajout son en bas
     }
     function traitementAddEtude($param_post) {
-        require_once 'Vue/traitementAddEtude.php';//afficher un encar qui dit ajouté, les chang d'ajout son en bas
+        require_once 'Vue/traitementAddEtude.php';
     }
     
     function deleteEtude() {
         require_once 'Vue/vueDeleteEtude.php';//afficher un encar qui dit supp
     }
     
-    /*function updateEtude() {
-        $bdd = new Modele();
-        //...
-        $resultat = $bdd->updateEtude();
-        require_once 'Vue/vueUpdateEtude.php';
-    }*/
+    function listZone() {
+        require_once 'Vue/vueListZone.php';
+    }
     
     function addZone() {
         require_once 'Vue/vueAddZone.php';//penser a afficher un encar qui dit ajouté, les chang d'ajout son en bas
     }
     function traitementAddZone($param_post) {
-        require_once 'Vue/traitementAddZone.php';//penser a afficher un encar qui dit ajouté, les chang d'ajout son en bas
+        require_once 'Vue/traitementAddZone.php';
+    }
+    
+    function page404() {
+        require_once 'Vue/vuePage404.php';
     }
     
     function erreur($messageErreur){

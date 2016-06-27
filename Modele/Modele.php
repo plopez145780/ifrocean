@@ -1,5 +1,6 @@
 <?php
 include_once 'Config/ConfigBDD.php';
+include_once 'Modele/GPS.php';
 /**
  * Description of Modele
  *
@@ -53,13 +54,49 @@ class Modele {
                 $etudes[] = new Etude($etude["nomEtude"],$etude["ville"],$etude["superficie"],$etude["date"],$etude["validation"],$etude["idEtude"]);
             }
             return $etudes;
-            
-    }
-    public function getListeZone(){
-            
     }
     
-    
-    
-    
+    public function getZone($idZone) {
+        $pdo = $this->getConnection();
+            $req = $pdo->prepare(
+                    "SELECT idZone, nomZone, latA, longA, latB, longB, latC, longC, latD, longD,"
+                . "surface, validZone, idEtude FROM zones WHERE idZone = :idZone");
+            $req->bindParam(":idZone", $idZone);
+            $req->execute();
+            $paramZone = $req->fetch();
+            $zone = new Etude(
+                    $paramZone['nomZone'],
+                    new GPS($paramZone['latA'], $paramZone['longA']),
+                    new GPS($paramZone['latB'], $paramZone['longB']),
+                    new GPS($paramZone['latC'], $paramZone['longC']),
+                    new GPS($paramZone['latD'], $paramZone['longD']),
+                    $paramZone['surface'],
+                    $paramZone['validZone'],
+                    $paramZone['idZone'],
+                    $paramZone['idEtude']
+            );
+            return $zone;
+    }
+    public function getListeZone($idEtude){
+        $pdo = $this->getConnection();
+        $req = $pdo->prepare("SELECT idZone, nomZone, latA, longA, latB, longB, latC, longC, latD, longD,"
+                . "surface, validZone, idEtude FROM zones WHERE idEtude = :id");
+        $req->bindParam(":id", $idEtude);
+        $req->execute();
+        $zones=array();
+        while ($zone = $req->fetch()){
+            $zones[] = new Etude(
+                    $zone['nomZone'],
+                    new GPS($zone['latA'], $zone['longA']),
+                    new GPS($zone['latB'], $zone['longB']),
+                    new GPS($zone['latC'], $zone['longC']),
+                    new GPS($zone['latD'], $zone['longD']),
+                    $zone['surface'],
+                    $zone['validZone'],
+                    $zone['idZone'],
+                    $zone['idEtude']
+            );
+        }
+        return $zones;
+    }
 }

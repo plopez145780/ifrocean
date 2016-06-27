@@ -1,12 +1,12 @@
 <?php 
 include_once '/Modele/Modele.php';
-$title = "ListePlageEtude"; 
+$title = "Liste des Etudes"; 
 $bdd = new Modele();
 $etudes = $bdd->getListeEtude();
 ?>
 <!-- Le corps -->
 <?php ob_start(); ?>
-<h1>Liste des Etudes</h1>
+<h1><?= $title ?></h1>
 <table class="table table-striped">
     <tr>
         <th>Nom des études</th>

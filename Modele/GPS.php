@@ -10,6 +10,11 @@ class GPS {
     private $longitude;
     
     //CONSTRUCTEURS
+    public function construct_decimal($latitude, $longitude) {
+        $this->latitude = $latitude;
+        $this->longitude = $longitude;
+    }
+    
     public function __construct($directionNS, $degresLat, $minutesLat, $secondesLat, $centiemesLat, $directionEO, $degresLong, $minutesLong, $secondeSLong, $centiemesLong) {
         $this->latitude = $this->sexagesimalToDecimal($directionNS, $degresLat, $minutesLat, $secondesLat, $centiemesLat);
         $this->longitude = $this->sexagesimalToDecimal($directionEO, $degresLong, $minutesLong, $secondeSLong, $centiemesLong);

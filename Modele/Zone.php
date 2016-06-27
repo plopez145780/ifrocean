@@ -15,12 +15,20 @@ class Zone {
     private $idEtude;
     
     //CONSTRUCTEUR
-    public function __construct($nom, $idEtude, $p1, $p2, $p3, $p4) {
-        $this->coordonneesGPS = array($p1, $p2, $p3, $p4);
+    public function __construct($nom, $idEtude, $p1, $p2, $p3, $p4,$surface = null,$valideZone = 0, $id = null) {
         $this->nom = $nom;
-        $this->surface = $this->calculerSurface();
-        $this->valideZone = 0;
         $this->idEtude = $idEtude;
+        $this->coordonneesGPS = array($p1, $p2, $p3, $p4);
+        if($surface == null){
+            $this->surface = $this->calculerSurface();
+        }
+        else {
+            $this->surface = $surface;
+        }
+        if($valideZone != 0){
+            $this->valideZone = $valideZone;
+        }
+        $this->id = $id;
     }
     
     //GETTER and SETTER
@@ -30,8 +38,23 @@ class Zone {
     function getCoordonneesGPSbyCase($i) {
         return $this->coordonneesGPS[$i];
     }
-    
+    function getNom() {
+        return $this->nom;
+    }
 
+    function getId() {
+        return $this->id;
+    }
+
+    function getSurface() {
+        return $this->surface;
+    }
+
+    function getIdEtude() {
+        return $this->idEtude;
+    }
+
+    
     //METHODE
     public function calculerSurface(){
         $t1 = new Triangle($this->coordonneesGPS[0], $this->coordonneesGPS[1], $this->coordonneesGPS[2]);

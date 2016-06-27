@@ -1,15 +1,16 @@
 <?php 
+    $idEtude = filter_input(INPUT_GET, "id_etude", FILTER_SANITIZE_NUMBER_INT);
+    $bdd = new Modele();
+    $etude = $bdd->getEtude($idEtude);
+    $nomEtude = $etude->getNom();
+    $title = $nomEtude . " :: Ajouter une zone"; 
     
-//a faire en dynamique
-    $title = "Ajouter un zone"; 
-    $nomEtude = "recuperer étude";
-    $idEtude = 1;
 ?>
 
 <!-- Le corps -->
 <?php ob_start(); ?>
 <section>
-    <h1>Création d'une nouvelle zone - <?php echo $nomEtude ?></h1>
+    <h1><?= $title ?></h1>
 <!-- Formulaire POST-->
 
 
