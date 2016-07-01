@@ -57,14 +57,23 @@
     <div class="container">
         
         <div class="ariane">
-            <?php //Fil d'ariane ?>
-            <a href="/ifrocean/">Accueil</a>
-            <?php if (isset($nomEtude)): ?>
-             > <a href="/ifrocean/index.php?action=list_etude"> Etude : <?= $nomEtude ?></a>
-                <?php if (isset($nomZone)): ?>
-                     > <a href="/ifrocean/index.php?action=list_zone&id_etude='.<?= $param_post['idEtude'] ?>">Zone : <?= $nomZone ?></a>
-                <?php endif ?>
-            <?php endif ?>
+            <?php //Fil d'ariane
+            echo '<a href="/ifrocean/">Accueil</a>';
+            if (isset($nomEtude)){
+                echo '> <a href="/ifrocean/index.php?action=list_etude"> Etude : ' . $nomEtude . '</a>';
+                if (isset($nomZone)){
+                     echo '> <a href="/ifrocean/index.php?action=list_zone&id_etude=' . $param_post['idEtude'] .'">Zone : ' . $nomZone .'</a>';
+                }
+            }
+            else {
+                if (isset($nomEtudeBio)){
+                    echo '> <a href="/ifrocean/accueil_biologiste.php"> Etude : ' . $nomEtudeBio .'</a>';
+                    if (isset($nomZoneBio)){
+                    echo '> <a href="/ifrocean/index.php?action=list_zone&id_etude=' . $param_post['idEtude'] .'">Zone : ' . $nomZoneBio . '</a>';
+                    }
+                } 
+            }
+            ?>       
         </div>
         
         
