@@ -4,8 +4,9 @@
     $bdd = new Modele();
     $zones = $bdd->getListeZone($idEtude);
 
-    $nomEtude = "canard";
-    $title = $nomEtude . " :: Liste des zones";
+    $etude = $bdd->getEtude($idEtude);
+    $nomEtude = $etude->getNom();
+    $title = $nomEtude . " : Liste des zones";
 
 
 ?>
@@ -14,7 +15,7 @@
 <!-- Le corps -->
 <?php ob_start(); ?>
 <section>
-    <h1>Liste des zones - <?php echo $title ?></h1>
+    <h1><?php echo $title ?></h1>
     <table class="table table-striped">
         <tr>
             <th>Nom des études</th>

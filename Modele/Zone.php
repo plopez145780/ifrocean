@@ -16,19 +16,17 @@ class Zone {
     
     //CONSTRUCTEUR
     public function __construct($nom, $idEtude, $p1, $p2, $p3, $p4,$surface = null,$valideZone = 0, $id = null) {
-        $this->nom = $nom;
-        $this->idEtude = $idEtude;
         $this->coordonneesGPS = array($p1, $p2, $p3, $p4);
+        $this->nom = $nom;
+        $this->id = $id;
         if($surface == null){
             $this->surface = $this->calculerSurface();
         }
         else {
             $this->surface = $surface;
         }
-        if($valideZone != 0){
-            $this->valideZone = $valideZone;
-        }
-        $this->id = $id;
+        $this->valideZone = $valideZone;
+        $this->idEtude = $idEtude;
     }
     
     //GETTER and SETTER

@@ -29,6 +29,10 @@ $pointD = new GPS(
 
 $zone = new Zone($param_post["inputNomZone"],$param_post["idEtude"], $pointA, $pointB, $pointC, $pointD);
 $zone->addZone();
-header('Location: /ifrocean/index.php?action=list_zone&id_etude='.$param_post["idEtude"]);
+
+var_dump($param_post);
+var_dump($zone);
+
+//header('Location: /ifrocean/index.php?action=list_zone&id_etude='.$param_post["idEtude"]);
 
 ?>
