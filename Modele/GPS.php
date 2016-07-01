@@ -10,11 +10,6 @@ class GPS {
     private $longitude;
     
     //CONSTRUCTEURS
-    public function construct_decimal($latitude, $longitude) {
-        $this->latitude = $latitude;
-        $this->longitude = $longitude;
-    }
-    
     public function __construct($dirNS, $degLat, $minLat = null, $secLat = null, $centiLat = null, $dirEO = null, $degLong  = null, $minLong = null, $secLong = null, $centiLong = null) {
         if($minLat==null && $secLat==null && $centiLat==null && $dirEO==null && $degLong==null && $minLong==null && $secLong==null && $centiLong==null){
             $this->latitude = $dirNS;
