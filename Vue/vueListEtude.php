@@ -2,7 +2,7 @@
 include_once '/Modele/Modele.php';
 $title = "Liste des Etudes"; 
 $bdd = new Modele();
-$etudes = $bdd->getListeEtude();
+$etudes = $bdd->getListeEtudeOpen();
 ?>
 <!-- Le corps -->
 <?php ob_start(); ?>

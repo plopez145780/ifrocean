@@ -58,6 +58,20 @@
         </nav>
     </header>
     <div class="container">
+        
+        <div class="ariane">
+            <?php //Fil d'ariane ?>
+            <a href="/ifrocean/">Accueil</a>
+            <?php if (isset($nomEtude)): ?>
+             > <a href="/ifrocean/index.php?action=list_etude"> Etude : <?= $nomEtude ?></a>
+                <?php if (isset($nomZone)): ?>
+                     > <a href="/ifrocean/index.php?action=list_zone&id_etude='.<?= $param_post['idEtude'] ?>">Zone : <?= $nomZone ?></a>
+                <?php endif ?>
+            <?php endif ?>
+        </div>
+        
+        
+        
         <?= $contenu ?>   <!-- Élément spécifique -->
 
         

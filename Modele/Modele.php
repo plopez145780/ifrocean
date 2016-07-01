@@ -44,7 +44,7 @@ class Modele {
             return $etude;
     }
     
-    public function getListeEtude(){
+    public function getListeEtudeOpen(){
             $pdo = $this->getConnection();
             $req = $pdo->prepare("SELECT idEtude, nomEtude, ville, superficie, date, validation FROM etudes "
                     . "WHERE (etudes.validation = 0)");

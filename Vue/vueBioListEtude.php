@@ -4,7 +4,7 @@ include_once '/Modele/Modele.php';
 $title = "ListePlageEtude"; 
 
 $bdd = new Modele();
-$etudes = $bdd->getListeEtude();
+$etudes = $bdd->getListeEtudeOpen();
 
 
 //var_dump($etudes);
