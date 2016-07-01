@@ -18,7 +18,7 @@
     <h1><?php echo $title ?></h1>
     <table class="table table-striped">
         <tr>
-            <th>Nom des études</th>
+            <th>Nom des zones</th>
         </tr>
         <?php foreach($zones as $zone) : ?>
             <tr>
