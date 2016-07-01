@@ -10,7 +10,7 @@
     
     <div class="row">
         <div class="col-md-2 col-md-offset-5">
-            <a href="index.php?action=bio_list_etude" class="btn btn-lg btn-default">Biologiste</a>
+            <a href="accueil_biologiste.php" class="btn btn-lg btn-default">Biologiste</a>
             <br>
             <br>
             <a href="index.php?action=list_etude" class="btn btn-lg btn-default">Préleveur</a>

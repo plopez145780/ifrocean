@@ -11,7 +11,7 @@ class ConfigBDD {
     public $password = "";*/
     
     const SERVERNAME = "localhost:3306";
-    const DBNAME = "ifrocean";
-    const USERNAME ="ifrocean";
+    const DBNAME = "projet_ifrocean";
+    const USERNAME ="projet_ifrocean";
     const PASSWORD = "poec";
 }
