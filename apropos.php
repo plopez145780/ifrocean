@@ -1,5 +1,8 @@
-<?php include("/header.inc.php"); ?>
-
+<?php 
+$title = "A Propos";
+?>
+<!-- Le corps -->
+<?php ob_start(); ?>
 <section>
     <article>
         <h1>Projet réalisé par :</h1>
@@ -11,6 +14,5 @@
         </p>
     </article>
 </section>
-
-<!-- Le pied de page -->
-<?php include("/footer.inc.php"); ?>
+<?php $contenu = ob_get_clean(); ?>
+<?php require 'Vue/gabarit.php'; ?>
