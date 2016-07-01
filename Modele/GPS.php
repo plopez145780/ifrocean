@@ -15,9 +15,15 @@ class GPS {
         $this->longitude = $longitude;
     }
     
-    public function __construct($directionNS, $degresLat, $minutesLat, $secondesLat, $centiemesLat, $directionEO, $degresLong, $minutesLong, $secondeSLong, $centiemesLong) {
-        $this->latitude = $this->sexagesimalToDecimal($directionNS, $degresLat, $minutesLat, $secondesLat, $centiemesLat);
-        $this->longitude = $this->sexagesimalToDecimal($directionEO, $degresLong, $minutesLong, $secondeSLong, $centiemesLong);
+    public function __construct($dirNS, $degLat, $minLat = null, $secLat = null, $centiLat = null, $dirEO = null, $degLong  = null, $minLong = null, $secLong = null, $centiLong = null) {
+        if($minLat==null && $secLat==null && $centiLat==null && $dirEO==null && $degLong==null && $minLong==null && $secLong==null && $centiLong==null){
+            $this->latitude = $dirNS;
+            $this->longitude = $degLat;
+        }
+        else {
+            $this->latitude = $this->sexagesimalToDecimal($dirNS, $degLat, $minLat, $secLat, $centiLat);
+            $this->longitude = $this->sexagesimalToDecimal($dirEO, $degLong, $minLong, $secLong, $centiLong);
+        }
     }
 
     //GETTER et SETTER
