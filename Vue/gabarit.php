@@ -12,16 +12,8 @@
     
     <link href="/ifrocean/vendor/ifrocean/css/style.css" rel="stylesheet" type="text/css">
     <script src="/ifrocean/vendor/ifrocean/js/javascript.js"></script>
-    
     <!-- Bootstrap core CSS -->
-    <link href="/ifrocean/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="/ifrocean/vendor/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="/ifrocean/vendor/bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="/ifrocean/vendor/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+    <link href="/ifrocean/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -92,8 +84,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
         <script src="../../dist/js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     </div><!-- /.container -->
 </body>
 </html>
