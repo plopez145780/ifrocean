@@ -1,0 +1,13 @@
+{
+    "name": "vendor/ifrocean",
+    "description": "Description of project ifrocean.",
+    "authors": [
+        {
+            "name": "Pierre Lopez",
+            "email": "pierre_albert_lopez@hotmail.fr"
+        }
+    ],
+    "require": {
+        "twbs/bootstrap": "^3.3"
+    }
+}
