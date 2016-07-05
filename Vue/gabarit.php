@@ -54,14 +54,14 @@
             if (isset($nomEtude)){
                 echo '> <a href="/ifrocean/index.php?action=list_etude"> Etude : ' . $nomEtude . '</a>';
                 if (isset($nomZone)){
-                     echo '> <a href="/ifrocean/index.php?action=list_zone&id_etude=' . $param_post['idEtude'] .'">Zone : ' . $nomZone .'</a>';
+                     echo '> <a href="/ifrocean/index.php?action=list_zone&id_etude=' . $idEtude .'">Zone : ' . $nomZone .'</a>';
                 }
             }
             else {
                 if (isset($nomEtudeBio)){
                     echo '> <a href="/ifrocean/accueil_biologiste.php"> Etude : ' . $nomEtudeBio .'</a>';
                     if (isset($nomZoneBio)){
-                    echo '> <a href="/ifrocean/index.php?action=list_zone&id_etude=' . $param_post['idEtude'] .'">Zone : ' . $nomZoneBio . '</a>';
+                    echo '> <a href="/ifrocean/index.php?action=list_zone&id_etude=' . $idEtude .'">Zone : ' . $nomZoneBio . '</a>';
                     }
                 } 
             }

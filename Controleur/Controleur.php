@@ -41,6 +41,9 @@
     function traitementAddZone($param_post) {
         require_once 'Vue/traitementAddZone.php';
     }
+    function addEspece() {
+        require_once 'Vue/vueAddEspece.php';
+    }
     
     function page404() {
         require_once 'Vue/vuePage404.php';

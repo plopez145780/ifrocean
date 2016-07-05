@@ -7,7 +7,6 @@ try {
             bioListEtude();
         }
         
-        
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'list_etude') {
             listEtude();
         }
@@ -88,6 +87,9 @@ try {
                 "dirLongD" => filter_input(INPUT_POST, "dirLongD", FILTER_SANITIZE_STRING),
             );
             traitementAddZone($param_post);
+        }
+        if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'add_espece') {
+            addEspece();
         }
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == '404') {
             page404();

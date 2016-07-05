@@ -3,14 +3,11 @@
     
     $bdd = new Modele();
     $zones = $bdd->getListeZone($idEtude);
-
+    
     $etude = $bdd->getEtude($idEtude);
     $nomEtude = $etude->getNom();
     $title = $nomEtude . " : Liste des zones";
-
-
 ?>
-
 
 <!-- Le corps -->
 <?php ob_start(); ?>
@@ -23,7 +20,7 @@
         <?php foreach($zones as $zone) : ?>
             <tr>
                 <td>
-                    <a href='index.php?action=view_zone&id_etude=<?= $idEtude; ?>&id_zone=<?= $zone->getId(); ?>'><?= $zone->getNom(); ?></a>
+                    <a href='index.php?action=add_espece&id_etude=<?= $idEtude; ?>&id_zone=<?= $zone->getId(); ?>'><?= $zone->getNom(); ?></a>
                 </td>
             </tr>
         <?php endforeach; ?>

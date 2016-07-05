@@ -1,6 +1,8 @@
 <?php
 include_once 'Config/ConfigBDD.php';
 include_once 'Modele/GPS.php';
+include_once 'Modele/Zone.php';
+
 /**
  * Description of Modele
  *
@@ -85,16 +87,16 @@ class Modele {
         $req->execute();
         $zones=array();
         while ($zone = $req->fetch()){
-            $zones[] = new Etude(
+            $zones[] = new Zone(
                     $zone['nomZone'],
+                    $zone['idEtude'],
                     new GPS($zone['latA'], $zone['longA']),
                     new GPS($zone['latB'], $zone['longB']),
                     new GPS($zone['latC'], $zone['longC']),
                     new GPS($zone['latD'], $zone['longD']),
                     $zone['surface'],
                     $zone['validZone'],
-                    $zone['idZone'],
-                    $zone['idEtude']
+                    $zone['idZone']
             );
         }
         return $zones;
