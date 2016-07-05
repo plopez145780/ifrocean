@@ -1,7 +1,14 @@
 <?php
-$nomEtudeBio;
-$nomZoneBio;
-$title = "Détail des espèces";
+    
+    require_once './Modele/Etude.php';
+    $idEtude = filter_input(INPUT_GET, "etude", FILTER_SANITIZE_NUMBER_INT);
+    $idZone = filter_input(INPUT_GET, "zone", FILTER_SANITIZE_NUMBER_INT);
+    $bddAriane = new Modele();
+    $etude = $bddAriane->getEtude($idEtude);
+    $nomEtudeBio = $etude->getNom();
+
+    $nomZoneBio;
+    $title = "Détail des espèces"; 
 ?>
 <!-- Le corps -->
 <?php ob_start(); ?>
@@ -19,7 +26,7 @@ $req = $bdd->prepare('SELECT nomEspece, espece_zone.quantite, nomZone, surface, 
         . 'INNER JOIN especes ON especes.idEspece=espece_zone.idEspece '
         . 'INNER JOIN zones ON espece_zone.idZone=zones.idZone '
         . 'INNER JOIN etudes ON zones.idEtude=etudes.idEtude WHERE zones.idZone = ?');
-$req->execute(array($_GET['zone']));
+$req->execute(array($idZone));
 
 // Affichage de chaque message
 $premier = true;

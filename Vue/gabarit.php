@@ -61,7 +61,7 @@
                 if (isset($nomEtudeBio)){
                     echo '> <a href="/ifrocean/accueil_biologiste.php"> Etude : ' . $nomEtudeBio .'</a>';
                     if (isset($nomZoneBio)){
-                    echo '> <a href="/ifrocean/index.php?action=list_zone&id_etude=' . $idEtude .'">Zone : ' . $nomZoneBio . '</a>';
+                    echo '> <a href="/ifrocean/detail.php?etude=' . $idEtude .'">Zone : ' . $nomZoneBio . '</a>';
                     }
                 } 
             }

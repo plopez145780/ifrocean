@@ -38,7 +38,7 @@ while ($donnees = $req->fetch()) {
             ?> <tr>
                 <td><?php echo $donnees['nomZone']; ?></td>
                 <td class="text-right"><?php echo $donnees['surface']; ?></td>
-                <td><form method= "post" action="detailEspece.php?zone=<?php echo $donnees['idZone']; ?> ">
+                <td><form method= "post" action="detailEspece.php?etude=<?= $recup ?>&zone=<?php echo $donnees['idZone']; ?> ">
                         <input type="submit" class="btn btn-info" value="Détail des espèces"/></form></td>
             </tr>
         <?php
