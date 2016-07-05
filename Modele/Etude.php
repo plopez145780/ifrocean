@@ -31,20 +31,26 @@ class Etude extends Modele {
     function getId() {
         return $this->id;
     }
-
     function getNom() {
         return $this->nom;
     }
-
     function setId($id) {
         $this->id = $id;
     }
-
     function setNom($nom) {
         $this->nom = $nom;
     }
+    function getVille() {
+        return $this->ville;
+    }
+    function getSuperficie() {
+        return $this->superficie;
+    }
+    function getDatePrelev() {
+        return $this->datePrelev;
+    }
 
-        
+            
     //METHODES
     public function delEtude() {
         $bdd = new Modele();

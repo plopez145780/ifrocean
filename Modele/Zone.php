@@ -39,15 +39,12 @@ class Zone {
     function getNom() {
         return $this->nom;
     }
-
     function getId() {
         return $this->id;
     }
-
     function getSurface() {
         return $this->surface;
     }
-
     function getIdEtude() {
         return $this->idEtude;
     }
