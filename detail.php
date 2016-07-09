@@ -84,7 +84,6 @@ while ($donnees = $req->fetch()) {
         $req->closeCursor();
         ?>
     </table>
-
-<a class="btn btn-default" href="export.php?etude=<?= $recup ?>&zone=<?= $donnees['idZone']; ?>">Export KML</a>
+<a class="btn btn-default" href="export.php?etude=<?= $recup ?>">Export KML</a>
     <?php $contenu = ob_get_clean(); 
     require 'Vue/gabarit.php';
