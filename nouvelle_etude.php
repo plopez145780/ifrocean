@@ -1,5 +1,6 @@
 <?php
 $title = "Ajout d'étude";
+$nomEtudeBio ="";//pour le fils d'ariane bien formaté
 ?>
 <!-- Le corps -->
 <?php ob_start(); ?>
@@ -7,19 +8,19 @@ $title = "Ajout d'étude";
 <form method= "POST" action="ajouter_etude.php">
     <div class="form-group">
         <label for="nom">Nom de l'étude</label>
-        <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom"/>  
+        <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom" required/>  
     </div>
     <div class="form-group">
         <label for="ville">Nom de la ville</label>
-        <input type="text" class="form-control" name="ville" id="ville" placeholder="Ville"/>
+        <input type="text" class="form-control" name="ville" id="ville" placeholder="Ville" required/>
     </div>
     <div class="form-group">
         <label for="superficie">Superficie (en m²)</label>
-        <input type="number" class="form-control" name="superficie" id="superficie" placeholder="m²"/>
+        <input type="number" class="form-control" name="superficie" id="superficie" placeholder="m²" required/>
     </div>
     <div class="form-group">
         <label for="date">Date du prélevement</label>
-        <input type="date" class="form-control" name="date" id="date"/>
+        <input type="date" class="form-control" name="date" id="date" required/>
     </div>
     <button type="submit" class="btn btn-default">Enregistrer</button>
 </form>

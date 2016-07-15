@@ -21,18 +21,20 @@ $donnees = $req->fetch();
 <?php
 ob_start();
 
+echo "<a class=\"btn btn-default\" href=\"export.php?etude=$recup\">Export KML</a><br/><br/>";
+
 // Affichage de chaque message
 $premier = true;
 while ($donnees = $req->fetch()) {
     if ($premier) {
-        ?><h2>Détail de l'étude : <?php echo $donnees['nomEtude'];
-        $nomEtudeBio = $donnees['nomEtude'];
-        ?></h2>
+        ?><h2>Détail de l'étude : <?php
+            echo $donnees['nomEtude'];
+            $nomEtudeBio = $donnees['nomEtude'];
+            ?></h2>
         <b>Ville : </b><?php echo $donnees['ville']; ?>
         <b>Superficie : </b><?php echo $donnees['superficie']; ?> m2 
         <b>Date des prélevements : </b><?php echo $donnees['date_fr']; ?></p>
-        <a class="btn btn-default" href="export.php?etude=<?= $recup ?>">Export KML</a>
-        <br/><br/>
+        
         <table class="table table-striped">
             <tr>
                 <th>Nom de la zone</th>
@@ -92,7 +94,11 @@ while ($donnees = $req->fetch()) {
     ?>
 </table>
 <?php
-$title = "Détail de l'étude : " . $nomEtudeBio;
+$title = "Détail de l'étude ";
+if (isset($nomEtudeBio)) {
+    $title .= ": " . $nomEtudeBio;
+}
+$nomEtudeBio = "";// pour le fil d'ariane formaté correctement pour cette page
 
 $contenu = ob_get_clean();
 require 'Vue/gabarit.php';

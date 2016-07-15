@@ -105,10 +105,10 @@ header('Content-Disposition: attachment; filename="downloaded.kml"');
                         <outerBoundaryIs>
                             <LinearRing>
                                 <coordinates>
-                                    <?= $zone->getCoordonneesGPSbyCase(0)->getLatitude(); ?>,<?= $zone->getCoordonneesGPSbyCase(0)->getLongitude(); ?>,0
-                                    <?= $zone->getCoordonneesGPSbyCase(1)->getLatitude(); ?>,<?= $zone->getCoordonneesGPSbyCase(1)->getLongitude(); ?>,0
-                                    <?= $zone->getCoordonneesGPSbyCase(2)->getLatitude(); ?>,<?= $zone->getCoordonneesGPSbyCase(2)->getLongitude(); ?>,0
-                                    <?= $zone->getCoordonneesGPSbyCase(3)->getLatitude(); ?>,<?= $zone->getCoordonneesGPSbyCase(3)->getLongitude(); ?>,0
+                                    <?= $zone->getCoordonneesGPSbyCase(0)->getLongitude(); ?>,<?= $zone->getCoordonneesGPSbyCase(0)->getLatitude(); ?>,0
+                                    <?= $zone->getCoordonneesGPSbyCase(1)->getLongitude(); ?>,<?= $zone->getCoordonneesGPSbyCase(1)->getLatitude(); ?>,0
+                                    <?= $zone->getCoordonneesGPSbyCase(2)->getLongitude(); ?>,<?= $zone->getCoordonneesGPSbyCase(2)->getLatitude(); ?>,0
+                                    <?= $zone->getCoordonneesGPSbyCase(3)->getLongitude(); ?>,<?= $zone->getCoordonneesGPSbyCase(3)->getLatitude(); ?>,0
                                 </coordinates>
                             </LinearRing>
                         </outerBoundaryIs>

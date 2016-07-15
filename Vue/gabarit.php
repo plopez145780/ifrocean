@@ -58,7 +58,7 @@
                         <?php if (isset($nomZoneBio)) : ?>
                             <?= $arianeAccueil . ' > <a href="/ifrocean/accueil_biologiste.php">Biologiste</a> > ' . '<a href="/ifrocean/detail.php?etude=' . $idEtude . '">Détail de l\'étude : ' . $nomEtudeBio . '</a> > Détail de la zone : ' . $nomZoneBio ?>
                         <?php else: ?>
-                            <?= $arianeAccueil . ' > <a href="/ifrocean/accueil_biologiste.php">Biologiste</a> > ' . 'Détail de l\'étude : ' . $nomEtudeBio ?>
+                            <?= $arianeAccueil . ' > <a href="/ifrocean/accueil_biologiste.php">Biologiste</a> > ' . $title ?>
                         <?php endif ?>
                     <?php else: ?>
                         <?php if ($_SERVER['REQUEST_URI'] != '/ifrocean/' AND $_SERVER['REQUEST_URI'] != '/ifrocean/index.php') : ?>
