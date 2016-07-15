@@ -1,6 +1,6 @@
 <?php
 $nomEtudeBio;
-$title = "Interface biologiste";
+//$title = "Détail de l'étude : " . $nomEtudeBio;
 
 $recup = $_GET['etude'];
 // Connexion à la base de données

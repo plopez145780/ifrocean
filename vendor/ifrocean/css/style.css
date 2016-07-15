@@ -5,6 +5,10 @@ body {
     padding: 40px 15px;
     text-align: center;
 }
-.vert{
+.vert {
     background-color: greenyellow !important;
+}
+
+#ariane {
+    margin-top: 10px;
 }

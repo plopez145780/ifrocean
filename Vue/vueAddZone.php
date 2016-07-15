@@ -5,6 +5,7 @@
     $nomEtude = $etude->getNom();
     $title = $nomEtude . " :: Ajouter une zone"; 
     
+    $nomZone = "";
 ?>
 
 <!-- Le corps -->
