@@ -1,18 +1,28 @@
-<?php 
-$title = "Interface biologiste";
+<?php
+$title = "Ajout d'étude";
 ?>
 <!-- Le corps -->
 <?php ob_start(); ?>
-    <p> Complètez le formulaire!</p> 
-    <form method= "post" action="ajouter_etude.php">
-            <p> 
-                    <label for="nom">Nom de l'étude</label> : <input type="text" name="nom" id="nom"/></br>
-                    <label for="ville">Nom de la ville</label> : <input type="text" name="ville" id="ville"/></br>
-                    <label for="superficie">Superficie</label> : <input type="text" name="superficie" id="superficie"/> m2 </br>
-                    <label for="date">Date du prélevement</label> : <input type="date" name="date" id="date"/></br>
-                    <input type="submit" value="Enregistrer"/>
-            </p>
-    </form>
+<h1><?= $title ?></h1>
+<form method= "POST" action="ajouter_etude.php">
+    <div class="form-group">
+        <label for="nom">Nom de l'étude</label>
+        <input type="text" class="form-control" name="nom" id="nom" placeholder="Nom"/>  
+    </div>
+    <div class="form-group">
+        <label for="ville">Nom de la ville</label>
+        <input type="text" class="form-control" name="ville" id="ville" placeholder="Ville"/>
+    </div>
+    <div class="form-group">
+        <label for="superficie">Superficie (en m²)</label>
+        <input type="number" class="form-control" name="superficie" id="superficie" placeholder="m²"/>
+    </div>
+    <div class="form-group">
+        <label for="date">Date du prélevement</label>
+        <input type="date" class="form-control" name="date" id="date"/>
+    </div>
+    <button type="submit" class="btn btn-default">Enregistrer</button>
+</form>
 <?php $contenu = ob_get_clean(); ?>
 <?php require 'Vue/gabarit.php'; ?>
 

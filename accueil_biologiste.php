@@ -5,8 +5,10 @@ $title = "Accueil biologiste";
 <!-- Le corps -->
 <?php ob_start(); ?>
 <h1><?= $title ?></h1>
+<form method= "post" action="nouvelle_etude.php">
+    </br><input class="btn btn-default" type="submit" value="Crée une nouvelle étude"/>
+</form>
 <h2>Liste des etudes</h2>
-
 <table class="table table-striped">
     <tr>
         <th>Nom étude</th>
@@ -46,8 +48,5 @@ $title = "Accueil biologiste";
 }
 $req->closeCursor();
 ?></table>
-<form method= "post" action="nouvelle_etude.php">
-    </br><input class="btn btn-default" type="submit" value="Crée une nouvelle étude"/>
-</form>
 <?php $contenu = ob_get_clean(); ?>
 <?php require 'Vue/gabarit.php'; ?>
