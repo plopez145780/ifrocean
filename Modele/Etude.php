@@ -79,7 +79,16 @@ class Etude extends Modele {
         
     }
     public function updateEtude() {
-        
+        $bdd = new Modele();
+        $pdo = $bdd->getConnection();
+        $req = $pdo->prepare("UPDATE etudes SET nomEtude=:nom, ville=:ville, superficie=:superficie, date=:date, validation=:validation WHERE idEtude=:id");
+        $req->bindParam(":nom", $this->nom);
+        $req->bindParam(":ville", $this->ville);
+        $req->bindParam(":superficie", $this->superficie);
+        $req->bindParam(":date", $this->datePrelev);
+        $req->bindParam(":validation", $this->finEtude);
+        $req->bindParam(":id", $this->id);
+        $req->execute();
     }
     
     public function changerEtatEtude() {

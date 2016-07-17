@@ -13,8 +13,9 @@ $title = "Accueil biologiste";
     <tr>
         <th>Nom étude</th>
         <th>Nom ville</th>
-        <th>Superficie</th>
+        <th class="text-right">Superficie</th>
         <th>Date du prélevement</th>
+        <th></th>
         <th></th>
         <th></th>
     </tr>
@@ -39,8 +40,10 @@ $title = "Accueil biologiste";
             <td><?php echo $donnees['ville']; ?></td>
             <td class="text-right"><?php echo $donnees['superficie']; ?></td>
             <td><?php echo $donnees['date_fr']; ?></td>
-            <td><a class="btn bg-info" href="detail.php?etude=<?php echo $donnees['idEtude']; ?> ">Voir</a></td>
-            <td><a class="btn bg-info" href="supprimerEtude.php?etude=<?php echo $donnees['idEtude']; ?>">Supprimer</a></td>
+            <td><a class="btn bg-info" href="detail.php?etude=<?= $donnees['idEtude'] ?> ">Voir</a></td>
+            <td><a class="btn bg-info" href="modifier_etude.php?etude=<?= $donnees['idEtude'] ?>">Modifier</a></td>
+            <td><a class="btn bg-info" href="supprimerEtude.php?etude=<?= $donnees['idEtude'] ?>">Supprimer</a></td>
+            
         </tr>
 
 
