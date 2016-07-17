@@ -49,8 +49,14 @@ class Etude extends Modele {
     function getDatePrelev() {
         return $this->datePrelev;
     }
+    function getFinEtude() {
+        return $this->finEtude;
+    }
+    function setFinEtude($finEtude) {
+        $this->finEtude = $finEtude;
+    }
 
-            
+                
     //METHODES
     public function delEtude() {
         $bdd = new Modele();
@@ -74,5 +80,22 @@ class Etude extends Modele {
     }
     public function updateEtude() {
         
+    }
+    
+    public function changerEtatEtude() {
+        $bdd = new Modele();
+        
+        /*if($this->getFinEtude() == 1)
+            $newEtat = 0;
+        else
+            $newEtat = 1;
+        */
+        $newEtat = ($this->getFinEtude() == 1) ? 0 : 1 ;
+        
+        $pdo = $bdd->getConnection();
+        $req = $pdo->prepare("UPDATE etudes SET validation=:etat WHERE idEtude=:id");
+        $req->bindParam(":etat", $newEtat);
+        $req->bindParam(":id", $this->getId());
+        $req->execute();
     }
 }

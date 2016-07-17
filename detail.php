@@ -1,8 +1,13 @@
 <?php
+include_once './Modele/Etude.php';
 $nomEtudeBio;
 $title; //Déclaration en bas de page
 
 $recup = $_GET['etude'];
+
+$bdd = new Modele();
+$etude = $bdd->getEtude($recup);
+    
 // Connexion à la base de données
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
@@ -20,9 +25,11 @@ $donnees = $req->fetch();
 <!-- Le corps -->
 <?php
 ob_start();
-
-echo "<a class=\"btn btn-default\" href=\"export.php?etude=$recup\">Export KML</a><br/><br/>";
-
+if ($etude->getFinEtude() == 0)
+    echo "<br/><a class=\"btn btn-danger\" href=\"changer_etat_etude.php?etude=$recup\">Cloturer étude</a>";
+else
+    echo "<br/><a class=\"btn btn-success\" href=\"changer_etat_etude.php?etude=$recup\">Ouvrir étude</a>";
+echo "<a class=\"btn btn-default\" href=\"export.php?etude=$recup\">Export KML</a><br/>";
 // Affichage de chaque message
 $premier = true;
 while ($donnees = $req->fetch()) {
@@ -57,11 +64,11 @@ while ($donnees = $req->fetch()) {
 </table>
 <table class="table table-striped">
     <tr>
-        <th>Nom de l'éspece</th>
-        <th>Quantité</th>
-        <th>Surface de prélevement</th>
-        <th>Densité</th>
-        <th>Nombre d'individu estimé</th>
+        <th>Nom de l'espèce</th>
+        <th class="text-right">Quantité</th>
+        <th class="text-right">Surface de prélevement</th>
+        <th class="text-right">Densité</th>
+        <th class="text-right">Nombre d'individu estimé</th>
     </tr>
     <?php
     // Connexion à la base de données
