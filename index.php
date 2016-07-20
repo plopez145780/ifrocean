@@ -91,6 +91,21 @@ try {
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'add_espece') {
             addEspece();
         }
+        if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'ajout_espece_zone') {
+            ajoutEspeceZone();
+        }
+        if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'ajout_nom_espece') {
+            ajoutNomEspece();
+        }
+        if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'ajout_quantite') {
+            ajoutQuantite();
+        }
+        if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'sup_espece_zone') {
+            supEspeceZone();
+        }
+        if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'fin_zone') {
+            finZone();
+        }
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == '404') {
             page404();
         }

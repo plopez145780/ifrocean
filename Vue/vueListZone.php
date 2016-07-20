@@ -2,7 +2,7 @@
     $idEtude = filter_input(INPUT_GET, "id_etude", FILTER_SANITIZE_NUMBER_INT);
     
     $bdd = new Modele();
-    $zones = $bdd->getListeZone($idEtude);
+    $zones = $bdd->getListeZoneOpen($idEtude);
     
     $etude = $bdd->getEtude($idEtude);
     $nomEtude = $etude->getNom();

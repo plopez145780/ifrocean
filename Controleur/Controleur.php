@@ -45,6 +45,22 @@
         require_once 'Vue/vueAddEspece.php';
     }
     
+    function ajoutEspeceZone() {
+        require_once 'Vue/ajout_espece_zone.php';
+    }
+    function ajoutNomEspece() {
+        require_once 'Vue/ajout_nom_espece.php';
+    }
+    function ajoutQuantite() {
+        require_once 'Vue/ajout_quantite.php';
+    }
+    function supEspeceZone() {
+        require_once 'Vue/sup_espece_zone.php';
+    }
+    function finZone() {
+        require_once 'Vue/fin_zone.php';
+    }
+    
     function page404() {
         require_once 'Vue/vuePage404.php';
     }

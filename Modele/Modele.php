@@ -71,11 +71,26 @@ class Modele {
         );
         return $zone;
     }
-
+    
     public function getListeZone($idEtude) {
         $pdo = $this->getConnection();
         $req = $pdo->prepare("SELECT idZone, nomZone, latA, longA, latB, longB, latC, longC, latD, longD,"
                 . "surface, validZone, idEtude FROM zones WHERE idEtude = :id");
+        $req->bindParam(":id", $idEtude);
+        $req->execute();
+        $zones = array();
+        while ($zone = $req->fetch()) {
+            $zones[] = new Zone(
+                    $zone['nomZone'], $zone['idEtude'], new GPS($zone['latA'], $zone['longA']), new GPS($zone['latB'], $zone['longB']), new GPS($zone['latC'], $zone['longC']), new GPS($zone['latD'], $zone['longD']), $zone['surface'], $zone['validZone'], $zone['idZone']
+            );
+        }
+        return $zones;
+    }
+    
+    public function getListeZoneOpen($idEtude) {
+        $pdo = $this->getConnection();
+        $req = $pdo->prepare("SELECT idZone, nomZone, latA, longA, latB, longB, latC, longC, latD, longD,"
+                . "surface, validZone, idEtude FROM zones WHERE idEtude = :id AND validZone = 0");
         $req->bindParam(":id", $idEtude);
         $req->execute();
         $zones = array();
