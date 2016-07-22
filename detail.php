@@ -21,16 +21,17 @@ $req = $bdd->prepare('SELECT idZone, nomZone, surface, nomEtude, ville, superfic
         . 'DATE_FORMAT(date, \'%d/%m/%Y\') AS date_fr'
         . ' FROM zones INNER JOIN etudes ON zones.idEtude=etudes.idEtude WHERE etudes.idEtude = ?');
 $req->execute(array($_GET['etude']));
-$donnees = $req->fetch();
 ?>
 <!-- Le corps -->
 <?php
 ob_start();
-if ($etude->getFinEtude() == 0)
-    echo "<br/><a class=\"btn btn-danger\" href=\"changer_etat_etude.php?etude=$recup\">Cloturer étude</a>";
-else
-    echo "<br/><a class=\"btn btn-success\" href=\"changer_etat_etude.php?etude=$recup\">Ouvrir étude</a>";
-echo "<a class=\"btn btn-default\" href=\"export.php?etude=$recup\">Export KML</a><br/>";
+if ($etude->getFinEtude() == 0) : ?>
+    <br/><a class="btn btn-danger" href="changer_etat_etude.php?etude=<?= $recup ?>">Cloturer étude</a>
+<?php else : ?>
+    <br/><a class="btn btn-success" href="changer_etat_etude.php?etude=<?= $recup ?>">Ouvrir étude</a>
+    <?php endif; ?>
+<a class="btn btn-default" href="export.php?etude=<?= $recup ?>">Export KML</a><br/>
+<?php
 // Affichage de chaque message
 $premier = true;
 $valeurAbsente = true;
