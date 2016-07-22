@@ -38,8 +38,7 @@ class GPS {
      * Renvoi la distance en mètres
      */
     public function calculerDistance(GPS $pointGPS) {
-        //6372.795477598
-        $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
+        $earth_radius = 6378137;   
         
         $rlo1 = deg2rad($this->longitude);
         $rla1 = deg2rad($this->latitude);

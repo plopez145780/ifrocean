@@ -22,7 +22,7 @@ class Etude extends Modele {
         $this->nom = $nom;
         $this->ville = $ville;
         $this->superficie = $supercifie;
-        $this->datePrelev = $datePrelev; //timestamp ???
+        $this->datePrelev = $datePrelev;
         $this->finEtude = $finEtude;
         $this->id = $id;
     }
@@ -93,12 +93,7 @@ class Etude extends Modele {
     
     public function changerEtatEtude() {
         $bdd = new Modele();
-        
-        /*if($this->getFinEtude() == 1)
-            $newEtat = 0;
-        else
-            $newEtat = 1;
-        */
+ 
         $newEtat = ($this->getFinEtude() == 1) ? 0 : 1 ;
         
         $pdo = $bdd->getConnection();

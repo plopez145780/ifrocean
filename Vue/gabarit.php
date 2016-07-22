@@ -34,9 +34,9 @@
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/accueil_biologiste.php') echo 'class="active"'; ?> ><a href="/ifrocean/accueil_biologiste.php">Biologiste</a></li>
-                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/index.php?action=list_etude') echo 'class="active"'; ?> ><a href="/ifrocean/index.php?action=list_etude">Préleveur</a></li>
-                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/apropos.php') echo 'class="active"'; ?> ><a href="/ifrocean/apropos.php">A Propos</a></li>
+                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/accueil_biologiste.php') {echo 'class="active"';} ?> ><a href="/ifrocean/accueil_biologiste.php">Biologiste</a></li>
+                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/index.php?action=list_etude') {echo 'class="active"';} ?> ><a href="/ifrocean/index.php?action=list_etude">Préleveur</a></li>
+                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/apropos.php') {echo 'class="active"';} ?> ><a href="/ifrocean/apropos.php">A Propos</a></li>
                         </ul>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                             <?= $arianeAccueil . ' > <a href="/ifrocean/accueil_biologiste.php">Biologiste</a> > ' . $title ?>
                         <?php endif ?>
                     <?php else: ?>
-                        <?php if ($_SERVER['REQUEST_URI'] != '/ifrocean/' AND $_SERVER['REQUEST_URI'] != '/ifrocean/index.php') : ?>
+                        <?php if ($_SERVER['REQUEST_URI'] != '/ifrocean/' && $_SERVER['REQUEST_URI'] != '/ifrocean/index.php') : ?>
                             <?= $arianeAccueil . ' > ' . $title ?>
                         <?php endif ?>
                     <?php endif ?>

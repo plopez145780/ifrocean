@@ -1,6 +1,7 @@
 <?php
 $title = "Ajout d'étude";
-$nomEtudeBio ="";//pour le fils d'ariane bien formaté
+//pour le fils d'ariane bien formaté
+$nomEtudeBio ="";
 ?>
 <!-- Le corps -->
 <?php ob_start(); ?>

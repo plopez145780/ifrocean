@@ -2,7 +2,7 @@
 require('Controleur/Controleur.php');
 
 try {
-    if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) != FALSE) {
+    if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING)) {
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'bio_list_etude') {
             bioListEtude();
         }
@@ -10,10 +10,9 @@ try {
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'list_etude') {
             listEtude();
         }
-        if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'del_etude') {
-            if (filter_input(INPUT_GET, "id_etude", FILTER_SANITIZE_STRING) != FALSE) {
+        if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'del_etude' 
+                && filter_input(INPUT_GET, "id_etude", FILTER_SANITIZE_STRING)) {
                 deleteEtude();
-            }
         }
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'add_etude') {
             addEtude();
@@ -25,15 +24,15 @@ try {
                 "superficie" => filter_input(INPUT_POST, "superficie", FILTER_SANITIZE_NUMBER_INT),
                 "date" => filter_input(INPUT_POST, "date", FILTER_SANITIZE_NUMBER_INT)
             );
-            traitementAddEtude($param_post);
+            traitementAddEtude();
         }
         
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'list_zone') {
-            if (filter_input(INPUT_GET, "id_etude", FILTER_SANITIZE_STRING) != FALSE) {
+            if (filter_input(INPUT_GET, "id_etude", FILTER_SANITIZE_STRING)) {
                 listZone();
             }
             else {
-                throw new Exception("Paramètre manquant dans l'URL");
+                throw new InvalidArgumentException("Paramètre manquant dans l'URL");
             }
             
         }
@@ -86,7 +85,7 @@ try {
                 "longcentiemesD" => filter_input(INPUT_POST, "longcentiemesD", FILTER_SANITIZE_NUMBER_INT),
                 "dirLongD" => filter_input(INPUT_POST, "dirLongD", FILTER_SANITIZE_STRING),
             );
-            traitementAddZone($param_post);
+            traitementAddZone();
         }
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'add_espece') {
             addEspece();
@@ -115,5 +114,5 @@ try {
     }
 } catch (Exception $e) {
     $truc = new Exception("tintin");
-    erreur($e->getMessage());  
+    erreur();  
 }

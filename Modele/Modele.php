@@ -21,9 +21,11 @@ class Modele {
     // Exécute une requête SQL éventuellement paramétrée
     protected function executerRequete($sql, $params = null) {
         if ($params == null) {
-            $resultat = $this->getConnection()->query($sql);    // exécution directe
+            // exécution directe
+            $resultat = $this->getConnection()->query($sql);    
         } else {
-            $resultat = $this->getConnection()->prepare($sql);  // requête préparée
+            // requête préparée
+            $resultat = $this->getConnection()->prepare($sql);  
             $resultat->execute($params);
         }
         return $resultat;
@@ -41,9 +43,7 @@ class Modele {
         $req->bindParam(":id", $id);
         $req->execute();
         $paramEtude = $req->fetch();
-        $etude = new Etude($paramEtude["nomEtude"], $paramEtude["ville"], $paramEtude["superficie"], $paramEtude["date"], $paramEtude["validation"], $paramEtude["idEtude"]);
-
-        return $etude;
+        return new Etude($paramEtude["nomEtude"], $paramEtude["ville"], $paramEtude["superficie"], $paramEtude["date"], $paramEtude["validation"], $paramEtude["idEtude"]);
     }
 
     public function getListeEtudeOpen() {
@@ -66,10 +66,9 @@ class Modele {
         $req->bindParam(":idZone", $idZone);
         $req->execute();
         $paramZone = $req->fetch();
-        $zone = new Zone(
+        return new Zone(
                 $paramZone['nomZone'], new GPS($paramZone['latA'], $paramZone['longA']), new GPS($paramZone['latB'], $paramZone['longB']), new GPS($paramZone['latC'], $paramZone['longC']), new GPS($paramZone['latD'], $paramZone['longD']), $paramZone['surface'], $paramZone['validZone'], $paramZone['idZone'], $paramZone['idEtude']
         );
-        return $zone;
     }
     
     public function getListeZone($idEtude) {

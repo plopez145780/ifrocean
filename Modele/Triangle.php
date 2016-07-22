@@ -19,8 +19,6 @@ class Triangle {
         $cote3 = $this->lesPoints[2]->calculerDistance($this->lesPoints[0]);
         
         $p=($cote1+$cote2+$cote3)/2;
-        $surface = sqrt($p*($p-$cote1)*($p-$cote2)*($p-$cote3));
-        
-        return $surface;
+        return sqrt($p*($p-$cote1)*($p-$cote2)*($p-$cote3));
     }
 }

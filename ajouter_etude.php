@@ -13,10 +13,6 @@ try {
 // On ajoute une entrée dans la table etudes
 $bdd->exec("INSERT INTO etudes(idEtude, nomEtude, ville, superficie, date, validation) VALUES(NULL, '$nom', '$ville', '$superficie', '$date', '0')");
 
-
 // Redirection du visiteur vers la page précédente
 header('Location: accueil_biologiste.php');
-
-//$req->closeCursor();
-?>
-            
+    

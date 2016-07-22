@@ -56,8 +56,7 @@ class Zone {
         $t2 = new Triangle($this->coordonneesGPS[2], $this->coordonneesGPS[3], $this->coordonneesGPS[0]);
         $s1 = $t1->calculerSurface();
         $s2 = $t2->calculerSurface();
-        $surface = $s1 + $s2;
-        return $surface;
+        return $s1 + $s2;
     }
     
     public function delZone() {
