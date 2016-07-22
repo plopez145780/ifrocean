@@ -43,12 +43,12 @@ $req = $bdd->query('SELECT * FROM especes ORDER BY idEspece DESC');
                 <option value="<?= $donnees['nomEspece'] ?>"/> 
             <?php endwhile; ?> 
         </datalist>
-        <hr/>
-        <input type="hidden" name="idEtude" id="idEtude" value="<?= $idEtude; ?> "/>
-        <input type="hidden" name="idZone" id="idZone" value="<?= $idZone; ?> "/>
+        <br/>
+
         <label for="quantite">Quantité</label>
         <input type="text" class="form-control" name="quantite" id="quantite"/></br>
-
+        <input type="hidden" name="idEtude" id="idEtude" value="<?= $idEtude; ?>"/>
+        <input type="hidden" name="idZone" id="idZone" value="<?= $idZone; ?>"/>
         <?php $req->closeCursor(); ?>
         <input type="submit" class="btn btn-default" value="Enregistrer"/>
 
@@ -56,8 +56,8 @@ $req = $bdd->query('SELECT * FROM especes ORDER BY idEspece DESC');
 </form>
 <hr/>
 <form method= "post" action="index.php?action=ajout_nom_espece">
-    <label for="quantite">Si le nom de l'espèce n'existe pas ajoutez en un ici</label> 
-    <input type="text" class="form-control" name="nomEspece" id="nomEspece"/>
+    <label for="quantite">Nouveau nom d'espèce</label> 
+    <input type="text" class="form-control" name="nomEspece" id="nomEspece" placeholder="Si le nom de l'espèce n'existe pas ajoutez en une ici"/>
     <input type="hidden" name="etude" id="etude" value="<?= $idEtude ?> "/>
     <input type="hidden" name="zone" id="zone" value = "<?= $idZone ?>"/>
     <br/>
@@ -83,20 +83,18 @@ while ($donnees = $req->fetch()) {
         ?>
         <table class="table table-striped">
             <tr>
-                <th>Nom de l'espèce</th>
+                <th>Espèce</th>
                 <th>Quantité</th>
-                <th>Augmenter ou diminuer la quantité</th>
+                <th>Supprimer</th>
             </tr>
             <?php
             $valeurAbsente = false;
         }
         ?> <tr>
-            <td><?php echo $donnees['nomEspece']; ?></td>
-            <td><?php echo $donnees['quantite']; ?></td>
+            <td><?= $donnees['nomEspece'] ?></td>
             <td><form class="form-inline" method= "post" action="index.php?action=ajout_quantite&espece=<?php echo $donnees['idEspece']; ?>&id_etude=<?= $idEtude ?>&zone=<?php echo $donnees['idZone']; ?>">
-                    <input class="form-control" type="number" name="quantite" id="quantite"/><input class="btn btn-info" type="submit" value="valider"/></form></td>
-            <td><form class="form-inline" method= "post" action="index.php?action=sup_espece_zone&espece=<?php echo $donnees['idEspece']; ?>&zone=<?php echo $donnees['idZone']; ?>">
-                    <input class="btn btn-info" type="submit" value="supprimer"/></form></td>        
+                    <input class="form-control" type="number" name="quantite" id="quantite" value="<?= $donnees['quantite'] ?>"/><input class="btn btn-info" type="submit" value="Modifier"/></form></td>
+            <td><a class="btn btn-info" href="index.php?action=sup_espece_zone&espece=<?php echo $donnees['idEspece']; ?>&zone=<?php echo $donnees['idZone']; ?>">X</a></td>
 
         </tr>
         <?php
@@ -104,11 +102,9 @@ while ($donnees = $req->fetch()) {
     $req->closeCursor();
     ?>
 </table>
-<?php
-if ($valeurAbsente) {
-    echo "<p class='alert alert-info'>Aucune espèce n'a été trouvé</p>";
-}
-?>
+<?php if ($valeurAbsente) : ?>
+    <p class='alert alert-info'>Aucune espèce n'a été trouvé</p>
+<?php endif; ?>
 
 <?php $contenu = ob_get_clean(); ?>
 <?php require 'gabarit.php'; ?>

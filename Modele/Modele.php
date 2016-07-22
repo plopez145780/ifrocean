@@ -15,7 +15,7 @@ class Modele {
     private $pdo;
 
     public function __construct() {
-        $this->pdo = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
+        $this->pdo = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
     }
 
     // Exécute une requête SQL éventuellement paramétrée

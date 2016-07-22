@@ -9,7 +9,7 @@
     </div>
     
     <div class="row">
-        <div class="col-md-2 col-md-offset-5">
+        <div class="centre">
             <a href="accueil_biologiste.php" class="btn btn-lg btn-default">Biologiste</a>
             <br>
             <br>

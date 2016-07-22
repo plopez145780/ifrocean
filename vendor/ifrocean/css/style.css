@@ -1,18 +1,23 @@
 body {
     padding-top: 50px;
 }
+/*menu*/
+.logo{
+    height: 50px;
+}
+/*fil d'ariane*/
+#ariane {
+    margin-top: 10px;
+}
+/*accueil*/
+.centre{
+    text-align: center;
+}
 .starter-template {
     padding: 40px 15px;
     text-align: center;
 }
+/*tableau etude biologiste*/
 .vert {
     background-color: greenyellow !important;
-}
-
-#ariane {
-    margin-top: 10px;
-}
-
-.logo{
-    height: 50px;
 }
