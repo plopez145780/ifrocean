@@ -44,15 +44,14 @@ $req = $bdd->query('SELECT * FROM especes ORDER BY idEspece DESC');
                 <option value="<?= $donnees['nomEspece'] ?>"/> 
             <?php endwhile; ?> 
         </datalist>
+        <?php $req->closeCursor(); ?>
         <br/>
-
         <label for="quantite">Quantité</label>
-        <input type="text" class="form-control" name="quantite" id="quantite"/></br>
+        <input type="text" class="form-control" name="quantite" id="quantite"/>
         <input type="hidden" name="idEtude" id="idEtude" value="<?= $idEtude; ?>"/>
         <input type="hidden" name="idZone" id="idZone" value="<?= $idZone; ?>"/>
-        <?php $req->closeCursor(); ?>
+        <br/>
         <input type="submit" class="btn btn-default" value="Enregistrer"/>
-
     </div>
 </form>
 <hr/>
@@ -66,12 +65,6 @@ $req = $bdd->query('SELECT * FROM especes ORDER BY idEspece DESC');
 </form>
 <br/>
 <?php
-// Connexion à la base de données
-try {
-    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
 // Récupération
 $req = $bdd->prepare('SELECT especes.idEspece, nomEspece, quantite, espece_zone.idZone FROM especes '
         . 'INNER JOIN espece_zone ON especes.idEspece=espece_zone.idEspece WHERE espece_zone.idZone=?');

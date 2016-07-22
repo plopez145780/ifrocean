@@ -1,8 +1,6 @@
 <?php
 include_once 'Config/ConfigBDD.php';
 include_once './Modele/Etude.php';
-$nomEtudeBio;
-$title; //Déclaration en bas de page
 
 $recup = $_GET['etude'];
 
@@ -19,9 +17,9 @@ try {
 
 // Récupération
 $req = $bdd->prepare('SELECT idZone, nomZone, surface, nomEtude, ville, superficie, '
-        . 'DATE_FORMAT(date, \'%d/%m/%Y\') AS date_fr'
+        . 'DATE_FORMAT(date, \'%d/%m/%Y\') AS date_fr, validZone'
         . ' FROM zones INNER JOIN etudes ON zones.idEtude=etudes.idEtude WHERE etudes.idEtude = ?');
-$req->execute(array($_GET['etude']));
+$req->execute(array($recup));
 ?>
 <!-- Le corps -->
 <?php
@@ -51,13 +49,13 @@ while ($donnees = $req->fetch()) {
         <table class="table table-striped">
             <tr>
                 <th>Nom de la zone</th>
-                <th>Superficie en m2</th>
-                <th>Espèces prelever</th>
+                <th class="text-right">Superficie (en m²)</th>
+                <th>Espèces prélevé</th>
             </tr>
             <?php
             $premier = false;
         }
-        ?> <tr>
+        ?> <tr class="<?php if ($donnees['validZone'] == 1) {echo 'vert';} ?>">
             <td><?php echo $donnees['nomZone']; ?></td>
             <td class="text-right"><?php echo $donnees['surface']; ?></td>
             <td><form method= "post" action="detailEspece.php?etude=<?= $recup ?>&zone=<?php echo $donnees['idZone']; ?> ">
@@ -70,20 +68,13 @@ while ($donnees = $req->fetch()) {
 </table>
 
 <?php
-// Connexion à la base de données
-try {
-    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-
 // Récupération
 $req = $bdd->prepare('SELECT nomEspece, sum(quantite) AS quantiteT, sum(surface) AS surfaceT, (sum(quantite)/sum(surface)) '
         . 'AS densite, ROUND(sum(quantite)/sum(surface)*superficie) AS nbIndividu FROM espece_zone '
         . 'INNER JOIN especes ON especes.idEspece=espece_zone.idEspece INNER JOIN zones '
         . 'ON espece_zone.idZone=zones.idZone INNER JOIN etudes '
         . 'ON etudes.idEtude=zones.idEtude WHERE etudes.idEtude=? GROUP BY especes.idEspece');
-$req->execute(array($_GET['etude']));
+$req->execute(array($recup));
 
 
 $premier = true;

@@ -11,9 +11,6 @@ try {
 }
 // On ajoute une entrée dans la table etudes
 $bdd->exec("INSERT INTO especes(idEspece, nomEspece) VALUES(NULL, '$nomEspece')");
-
-
 // Redirection du visiteur vers la page précédente
 header("Location: index.php?action=add_espece&id_etude=$idEtude&id_zone=$zone");
 
-$req->closeCursor();
