@@ -66,7 +66,7 @@ class Modele {
         $req->bindParam(":idZone", $idZone);
         $req->execute();
         $paramZone = $req->fetch();
-        $zone = new Etude(
+        $zone = new Zone(
                 $paramZone['nomZone'], new GPS($paramZone['latA'], $paramZone['longA']), new GPS($paramZone['latB'], $paramZone['longB']), new GPS($paramZone['latC'], $paramZone['longC']), new GPS($paramZone['latD'], $paramZone['longD']), $paramZone['surface'], $paramZone['validZone'], $paramZone['idZone'], $paramZone['idEtude']
         );
         return $zone;
