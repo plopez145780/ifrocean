@@ -11,11 +11,11 @@ class Zone {
     private $nom;
     private $id;
     private $surface;
-    private $valideZone;
+    private $validZone;
     private $idEtude;
     
     //CONSTRUCTEUR
-    public function __construct($nom, $idEtude, $p1, $p2, $p3, $p4,$surface = null,$valideZone = 0, $id = null) {
+    public function __construct($nom, $idEtude, $p1, $p2, $p3, $p4,$surface = null,$validZone = 0, $id = null) {
         $this->coordonneesGPS = array($p1, $p2, $p3, $p4);
         $this->nom = $nom;
         $this->id = $id;
@@ -25,7 +25,7 @@ class Zone {
         else {
             $this->surface = $surface;
         }
-        $this->valideZone = $valideZone;
+        $this->validZone = $validZone;
         $this->idEtude = $idEtude;
     }
     
@@ -95,9 +95,11 @@ class Zone {
         $req->bindParam(":latD", $latD);
         $req->bindParam(":longD", $longD);
         $req->bindParam(":surface", $this->surface);
-        $req->bindParam(":validZone", $this->valideZone);
+        $req->bindParam(":validZone", $this->validZone);
         $req->bindParam(":idEtude", $this->idEtude);
         $req->execute();
+        
+        return $pdo->lastInsertId();
     }
     
     public function updateEtude() {

@@ -13,6 +13,8 @@
 <?php ob_start(); ?>
 <section>
     <h1><?php echo $title ?></h1>
+    <a href="index.php?action=add_zone&id_etude=<?= $idEtude; ?>" class="btn btn-lg btn-default">Nouvelle zone</a>
+    <?php if($zones != NULL) : ?>
     <table class="table table-striped">
         <tr>
             <th>Nom des zones</th>
@@ -25,8 +27,9 @@
             </tr>
         <?php endforeach; ?>
     </table> 
-    
-    <a href="index.php?action=add_zone&id_etude=<?= $idEtude; ?>" class="btn btn-lg btn-default">Nouvelle zone</a>
+    <?php else : ?>
+<p class='alert alert-info'>Aucune zone ouverte n'a été trouvé</p>
+<?php endif; ?>
 </section>
 
 <?php $contenu = ob_get_clean(); ?>

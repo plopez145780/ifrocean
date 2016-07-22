@@ -7,6 +7,7 @@ $etudes = $bdd->getListeEtudeOpen();
 <!-- Le corps -->
 <?php ob_start(); ?>
 <h1><?= $title ?></h1>
+<?php if($etudes != NULL) : ?>
 <table class="table table-striped">
     <tr>
         <th>Nom des études</th>
@@ -18,6 +19,9 @@ $etudes = $bdd->getListeEtudeOpen();
             </td>
         </tr>
     <?php endforeach; ?>
-</table> 
+</table>
+<?php else : ?>
+<p class='alert alert-info'>Aucune étude ouverte n'a été trouvé</p>
+<?php endif; ?>
 <?php $contenu = ob_get_clean(); ?>
 <?php require 'gabarit.php'; ?>
