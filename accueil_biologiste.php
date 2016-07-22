@@ -29,8 +29,11 @@ $title = "Accueil biologiste";
     // On récupère
     $req = $bdd->query('SELECT idEtude, nomEtude, ville, superficie, DATE_FORMAT(date, \'%d/%m/%Y\') AS date_fr, validation FROM etudes');
 
+    
+    $valeurAbsente = true;
     // Affichage de chaque message
     while ($donnees = $req->fetch()) {
+        $valeurAbsente = false;
         ?>
         <tr class="<?php if ($donnees['validation'] == 1) {
         echo 'vert';
@@ -51,5 +54,11 @@ $title = "Accueil biologiste";
 }
 $req->closeCursor();
 ?></table>
+
+<?php
+if ($valeurAbsente) {
+    echo "<p class='alert alert-info'>Aucune étude n'a été trouvé</p>";
+}
+?>
 <?php $contenu = ob_get_clean(); ?>
 <?php require 'Vue/gabarit.php'; ?>
