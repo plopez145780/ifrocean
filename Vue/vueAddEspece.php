@@ -1,4 +1,5 @@
 <?php
+include_once 'Config/ConfigBDD.php';
 $idEtude = filter_input(INPUT_GET, "id_etude", FILTER_SANITIZE_NUMBER_INT);
 $idZone = filter_input(INPUT_GET, "id_zone", FILTER_SANITIZE_NUMBER_INT);
 
@@ -19,7 +20,7 @@ $title = $nomEtude . " : " . $nomZone;
 <?php
 // Connexion à la base de données
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -67,7 +68,7 @@ $req = $bdd->query('SELECT * FROM especes ORDER BY idEspece DESC');
 <?php
 // Connexion à la base de données
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }

@@ -1,12 +1,12 @@
 <?php
-
+include_once 'Config/ConfigBDD.php';
 $nom = htmlspecialchars($_POST['nom']);
 $ville = htmlspecialchars($_POST['ville']);
 $superficie = htmlspecialchars($_POST['superficie']);
 $date = htmlspecialchars($_POST['date']);
 
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }

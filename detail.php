@@ -1,4 +1,5 @@
 <?php
+include_once 'Config/ConfigBDD.php';
 include_once './Modele/Etude.php';
 $nomEtudeBio;
 $title; //Déclaration en bas de page
@@ -11,7 +12,7 @@ $nomEtudeBio = $etude->getNom();
 
 // Connexion à la base de données
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -71,7 +72,7 @@ while ($donnees = $req->fetch()) {
 <?php
 // Connexion à la base de données
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }

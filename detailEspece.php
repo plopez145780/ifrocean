@@ -1,23 +1,24 @@
 <?php
-    require_once './Modele/Etude.php';
-    require_once './Modele/Zone.php';
-    
-    $idEtude = filter_input(INPUT_GET, "etude", FILTER_SANITIZE_NUMBER_INT);
-    $idZone = filter_input(INPUT_GET, "zone", FILTER_SANITIZE_NUMBER_INT);
-    $bddAriane = new Modele();
-    $etude = $bddAriane->getEtude($idEtude);
-    $nomEtudeBio = $etude->getNom();
-    
-    $zone = $bddAriane->getZone($idZone);
-    $nomZoneBio = $zone->getNom();
-    $title = "Détail de la zone : " . $nomZoneBio;
+include_once 'Config/ConfigBDD.php';
+require_once './Modele/Etude.php';
+require_once './Modele/Zone.php';
+
+$idEtude = filter_input(INPUT_GET, "etude", FILTER_SANITIZE_NUMBER_INT);
+$idZone = filter_input(INPUT_GET, "zone", FILTER_SANITIZE_NUMBER_INT);
+$bddAriane = new Modele();
+$etude = $bddAriane->getEtude($idEtude);
+$nomEtudeBio = $etude->getNom();
+
+$zone = $bddAriane->getZone($idZone);
+$nomZoneBio = $zone->getNom();
+$title = "Détail de la zone : " . $nomZoneBio;
 ?>
 <!-- Le corps -->
 <?php ob_start(); ?>
 <?php
 // Connexion à la base de données
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -28,7 +29,8 @@ $req = $bdd->prepare('SELECT nomEspece, espece_zone.quantite, nomZone, surface, 
         . 'INNER JOIN especes ON especes.idEspece=espece_zone.idEspece '
         . 'INNER JOIN zones ON espece_zone.idZone=zones.idZone '
         . 'INNER JOIN etudes ON zones.idEtude=etudes.idEtude WHERE zones.idZone = ?');
-$req->execute(array($idZone)); ?>
+$req->execute(array($idZone));
+?>
 
 <h2><?= $title ?></h2>
 <p><b>Espèces prélevées sur une superficie de : </b><?php echo $zone->getSurface(); ?> m2</p>
@@ -38,8 +40,9 @@ $req->execute(array($idZone)); ?>
 $premier = true;
 $valeurAbsente = true;
 while ($donnees = $req->fetch()) {
-$valeurAbsente = false;
-    if ($premier) { ?>
+    $valeurAbsente = false;
+    if ($premier) {
+        ?>
         <table class="table table-striped">
             <tr>
                 <th>Nom</th>

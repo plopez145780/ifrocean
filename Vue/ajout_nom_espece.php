@@ -1,10 +1,11 @@
 <?php
+include_once 'Config/ConfigBDD.php';
 $nomEspece = htmlspecialchars($_POST['nomEspece']);
 $idEtude = filter_input(INPUT_POST, "etude", FILTER_SANITIZE_NUMBER_INT);
 $zone = filter_input(INPUT_POST, "zone", FILTER_SANITIZE_NUMBER_INT);
 
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }

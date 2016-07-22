@@ -1,12 +1,12 @@
 <?php
-
+include_once 'Config/ConfigBDD.php';
 $nomEspece = htmlspecialchars($_POST['nomEspece']);
 $idEtude = filter_input(INPUT_POST, "idEtude", FILTER_SANITIZE_NUMBER_INT);
 $idZone = htmlspecialchars($_POST['idZone']);
 $quantite = htmlspecialchars($_POST['quantite']);
 
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
@@ -20,7 +20,7 @@ while ($donnees = $req->fetch()) {
 $req->closeCursor();
 
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ifrocean;charset=utf8', 'projet_ifrocean', 'poec');
+    $bdd = new PDO("mysql:host=" . ConfigBDD::SERVERNAME . ";dbname=" . ConfigBDD::DBNAME . ";charset=" . ConfigBDD::CHARSET, ConfigBDD::USERNAME, ConfigBDD::PASSWORD);
 } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
