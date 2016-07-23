@@ -1,9 +1,9 @@
 <?php
 
 include_once 'Config/ConfigBDD.php';
-include_once 'Modele/GPS.php';
-include_once 'Modele/Zone.php';
-include_once 'Modele/Espece.php';
+include_once 'GPS.php';
+include_once 'Zone.php';
+include_once 'Espece.php';
 
 /**
  * Description of Modele
@@ -38,7 +38,7 @@ class Modele {
     public function getEtude($id) {
         $pdo = $this->getConnection();
         $req = $pdo->prepare(
-                "SELECT idEtude, nomEtude, ville, superficie, DATE_FORMAT(date, '%d/%m/%Y') AS date, validation FROM etudes "
+                "SELECT idEtude, nomEtude, ville, superficie, date, validation FROM etudes "
                 . "WHERE (etudes.idEtude = :id)");
         $req->bindParam(":id", $id);
         $req->execute();
@@ -48,7 +48,7 @@ class Modele {
 
     public function getListeEtudeOpen() {
         $pdo = $this->getConnection();
-        $req = $pdo->prepare("SELECT idEtude, nomEtude, ville, superficie, DATE_FORMAT(date, '%d/%m/%Y') AS date, validation FROM etudes "
+        $req = $pdo->prepare("SELECT idEtude, nomEtude, ville, superficie, date, validation FROM etudes "
                 . "WHERE (etudes.validation = 0)");
         $req->execute();
         $etudes = array();

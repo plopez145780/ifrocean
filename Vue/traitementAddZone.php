@@ -1,6 +1,6 @@
 <?php
-include_once '/Modele/GPS.php';
-include_once '/Modele/Zone.php';
+include_once 'Modele/GPS.php';
+include_once 'Modele/Zone.php';
 
 $pointA = new GPS(
         $param_post["dirLatA"], $param_post["latdegresA"],$param_post["latminutesA"],
@@ -30,4 +30,4 @@ $pointD = new GPS(
 $zone = new Zone($param_post["inputNomZone"],$param_post["idEtude"], $pointA, $pointB, $pointC, $pointD);
 $lastId = $zone->addZone();
 
-header("Location: /ifrocean/index.php?action=add_espece&id_etude=".$param_post['idEtude']."&id_zone=$lastId");
+header("Location: /index.php?action=add_espece&id_etude=".$param_post['idEtude']."&id_zone=$lastId");

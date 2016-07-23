@@ -13,7 +13,7 @@ $title = $nomEtude . " : Liste des zones";
 <?php ob_start(); ?>
 <section>
     <h1><?php echo $title ?></h1>
-    <a href="index.php?action=add_zone&id_etude=<?= $idEtude; ?>" class="btn btn-default">Nouvelle zone</a>
+    <a href="/index.php?action=add_zone&id_etude=<?= $idEtude; ?>" class="btn btn-default">Nouvelle zone</a>
     <br/>
     <br/>
     <?php if ($zones != NULL) : ?>
@@ -24,7 +24,7 @@ $title = $nomEtude . " : Liste des zones";
             <?php foreach ($zones as $zone) : ?>
                 <tr>
                     <td>
-                        <a href='index.php?action=add_espece&id_etude=<?= $idEtude; ?>&id_zone=<?= $zone->getId(); ?>'><?= $zone->getNom(); ?></a>
+                        <a href='/index.php?action=add_espece&id_etude=<?= $idEtude; ?>&id_zone=<?= $zone->getId(); ?>'><?= $zone->getNom(); ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

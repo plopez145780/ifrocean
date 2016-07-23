@@ -16,7 +16,7 @@
 
 
 
-<form method="POST" action="/ifrocean/index.php?action=traitement_add_zone" class="form-horizontal">
+<form method="POST" action="/index.php?action=traitement_add_zone" class="form-horizontal">
     <div class="form-group">
         <label for="inputNomZone" class="col-sm-2 control-label">Nom de la zone</label>
         <div class="col-sm-5">

@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 <h1>Ajouter Etude</h1>
 
-<form method="POST" action="/ifrocean/index.php?action=traitement_add_etude">
+<form method="POST" action="/index.php?action=traitement_add_etude">
     <div class="form-group">
         <label for="nom">Nom</label>
         <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom étude - plage">

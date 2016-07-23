@@ -13,4 +13,4 @@ try {
 $bdd->exec("DELETE FROM `espece_zone` WHERE idZone = '$zone' AND idEspece = '$espece'");
 
 // Redirection du visiteur vers la page précédente
-header("Location: index.php?action=add_espece&id_etude=$etude&id_zone=$zone");
+header("Location: /index.php?action=add_espece&id_etude=$etude&id_zone=$zone");

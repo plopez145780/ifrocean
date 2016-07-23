@@ -15,7 +15,7 @@
     function addEtude() {
         require_once 'Vue/vueAddEtude.php';
     }
-    function traitementAddEtude() {
+    function traitementAddEtude($param_post) {
         require_once 'Vue/traitementAddEtude.php';
     }
     
@@ -30,7 +30,7 @@
     function addZone() {
         require_once 'Vue/vueAddZone.php';
     }
-    function traitementAddZone() {
+    function traitementAddZone($param_post) {
         require_once 'Vue/traitementAddZone.php';
     }
     function addEspece() {
@@ -57,7 +57,7 @@
         require_once 'Vue/vuePage404.php';
     }
     
-    function erreur(){
+    function erreur($erreur){
         require_once 'Vue/vueErreur.php';
     }
     

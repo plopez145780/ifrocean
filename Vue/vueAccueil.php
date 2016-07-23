@@ -10,10 +10,10 @@
     
     <div class="row">
         <div class="centre">
-            <a href="accueil_biologiste.php" class="btn btn-lg btn-default">Biologiste</a>
+            <a href="/accueil_biologiste.php" class="btn btn-lg btn-default">Biologiste</a>
             <br>
             <br>
-            <a href="index.php?action=list_etude" class="btn btn-lg btn-default">Préleveur</a>
+            <a href="/index.php?action=list_etude" class="btn btn-lg btn-default">Préleveur</a>
         </div>
     </div>
         

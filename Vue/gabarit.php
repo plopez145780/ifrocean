@@ -7,11 +7,11 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
+        <link rel="icon" href="/favicon.ico">
         <title><?= $title ?></title>
 
-        <link href="/ifrocean/vendor/ifrocean/css/style.css" rel="stylesheet" type="text/css">
-        <link href="/ifrocean/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/vendor/ifrocean/css/style.css" rel="stylesheet" type="text/css">
+        <link href="/vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -30,13 +30,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/ifrocean/"><img class="logo" src="/ifrocean/media/Ifrocean.png" alt="logo_ifrocean"/></a>
+                        <a class="navbar-brand" href="/"><img class="logo" src="/media/Ifrocean.png" alt="logo_ifrocean"/></a>
                     </div>
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/accueil_biologiste.php') {echo 'class="active"';} ?> ><a href="/ifrocean/accueil_biologiste.php">Biologiste</a></li>
-                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/index.php?action=list_etude') {echo 'class="active"';} ?> ><a href="/ifrocean/index.php?action=list_etude">Préleveur</a></li>
-                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/ifrocean/apropos.php') {echo 'class="active"';} ?> ><a href="/ifrocean/apropos.php">A Propos</a></li>
+                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/accueil_biologiste.php') {echo 'class="active"';} ?> ><a href="/accueil_biologiste.php">Biologiste</a></li>
+                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/index.php?action=list_etude') {echo 'class="active"';} ?> ><a href="/index.php?action=list_etude">Préleveur</a></li>
+                            <li <?php if (filter_input(INPUT_SERVER, 'REQUEST_URI') === '/apropos.php') {echo 'class="active"';} ?> ><a href="/apropos.php">A Propos</a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,22 +44,22 @@
         </header>
         <div class="container">
             <div id="ariane">
-                <?php $arianeAccueil = '<a href="/ifrocean/">Accueil</a>'; ?>
+                <?php $arianeAccueil = '<a href="/">Accueil</a>'; ?>
                 <?php if (isset($nomEtude)) : ?>
                     <?php if (isset($nomZone)) : ?>
-                        <?= $arianeAccueil . ' > <a href="/ifrocean/index.php?action=list_etude">Préleveur</a> > <a href="/ifrocean/index.php?action=list_zone&id_etude=' . $idEtude . '">' . $nomEtude . ': Liste des zones</a> > ' . $title ?>
+                        <?= $arianeAccueil . ' > <a href="/index.php?action=list_etude">Préleveur</a> > <a href="/index.php?action=list_zone&id_etude=' . $idEtude . '">' . $nomEtude . ': Liste des zones</a> > ' . $title ?>
                     <?php else: ?>
-                        <?= $arianeAccueil . ' > <a href="/ifrocean/index.php?action=list_etude">Préleveur</a> > ' . $title ?>
+                        <?= $arianeAccueil . ' > <a href="/index.php?action=list_etude">Préleveur</a> > ' . $title ?>
                     <?php endif ?>
                 <?php else: ?>
                     <?php if (isset($nomEtudeBio)) : ?>
                         <?php if (isset($nomZoneBio)) : ?>
-                            <?= $arianeAccueil . ' > <a href="/ifrocean/accueil_biologiste.php">Biologiste</a> > ' . '<a href="/ifrocean/detail.php?etude=' . $idEtude . '">Détail de l\'étude : ' . $nomEtudeBio . '</a> > Détail de la zone : ' . $nomZoneBio ?>
+                            <?= $arianeAccueil . ' > <a href="/accueil_biologiste.php">Biologiste</a> > ' . '<a href="/detail.php?etude=' . $idEtude . '">Détail de l\'étude : ' . $nomEtudeBio . '</a> > Détail de la zone : ' . $nomZoneBio ?>
                         <?php else: ?>
-                            <?= $arianeAccueil . ' > <a href="/ifrocean/accueil_biologiste.php">Biologiste</a> > ' . $title ?>
+                            <?= $arianeAccueil . ' > <a href="/accueil_biologiste.php">Biologiste</a> > ' . $title ?>
                         <?php endif ?>
                     <?php else: ?>
-                        <?php if ($_SERVER['REQUEST_URI'] != '/ifrocean/' && $_SERVER['REQUEST_URI'] != '/ifrocean/index.php') : ?>
+                        <?php if ($_SERVER['REQUEST_URI'] != '/' && $_SERVER['REQUEST_URI'] != '/index.php') : ?>
                             <?= $arianeAccueil . ' > ' . $title ?>
                         <?php endif ?>
                     <?php endif ?>
@@ -68,7 +68,7 @@
 
             <?= $contenu ?>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-            <script src="/ifrocean/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
         </div>
     </body>
 </html>

@@ -1,5 +1,5 @@
 <?php 
-include_once '/Modele/Modele.php';
+include_once 'Modele/Modele.php';
 $title = "Liste des Etudes"; 
 $bdd = new Modele();
 $etudes = $bdd->getListeEtudeOpen();
@@ -15,7 +15,7 @@ $etudes = $bdd->getListeEtudeOpen();
     <?php foreach($etudes as $etude) : ?>
         <tr>
             <td>
-                <a href='index.php?action=list_zone&id_etude=<?= $etude->getId(); ?>'><?= $etude->getNom(); ?></a>
+                <a href='/index.php?action=list_zone&id_etude=<?= $etude->getId(); ?>'><?= $etude->getNom(); ?></a>
             </td>
         </tr>
     <?php endforeach; ?>

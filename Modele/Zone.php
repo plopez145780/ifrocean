@@ -1,6 +1,6 @@
 <?php
-require_once '/Modele/GPS.php';
-require_once '/Modele/Triangle.php';
+require_once 'GPS.php';
+require_once 'Triangle.php';
 /**
  * Description of Zone
  *

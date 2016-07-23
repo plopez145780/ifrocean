@@ -39,7 +39,7 @@ echo $nomEtudeBio;
 ?></h2>
 <b>Ville : </b><?php echo $etude->getVille(); ?>
 <b>Superficie : </b><?php echo $etude->getSuperficie(); ?> m2 
-<b>Date des prélevements : </b><?php echo $etude->getDatePrelev(); ?></p>
+<b>Date des prélevements : </b><?php echo $etude->getDatePrelevFormatFr(); ?></p>
 
 <?php
 while ($donnees = $req->fetch()) {

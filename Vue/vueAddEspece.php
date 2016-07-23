@@ -35,7 +35,7 @@ $req = $bdd->query('SELECT * FROM especes ORDER BY idEspece DESC');
     </p>   
 </form>
 <br/>
-<form method= "post" action="index.php?action=ajout_espece_zone">
+<form method= "post" action="/index.php?action=ajout_espece_zone">
     <div class="form-group">
         <label for="nomEspece">Choix du nom de l'espèce</label>
         <input type="text" list="list_espece" name="nomEspece" id="nomEspece"/>

@@ -1,5 +1,5 @@
 <?php
-require('Controleur/Controleur.php');
+require('./Controleur/Controleur.php');
 
 try {
     if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING)) {
@@ -24,7 +24,7 @@ try {
                 "superficie" => filter_input(INPUT_POST, "superficie", FILTER_SANITIZE_NUMBER_INT),
                 "date" => filter_input(INPUT_POST, "date", FILTER_SANITIZE_NUMBER_INT)
             );
-            traitementAddEtude();
+            traitementAddEtude($param_post);
         }
         
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'list_zone') {
@@ -85,7 +85,7 @@ try {
                 "longcentiemesD" => filter_input(INPUT_POST, "longcentiemesD", FILTER_SANITIZE_NUMBER_INT),
                 "dirLongD" => filter_input(INPUT_POST, "dirLongD", FILTER_SANITIZE_STRING),
             );
-            traitementAddZone();
+            traitementAddZone($param_post);
         }
         if (filter_input(INPUT_GET, "action", FILTER_SANITIZE_STRING) == 'add_espece') {
             addEspece();
@@ -113,6 +113,6 @@ try {
         accueil();
     }
 } catch (Exception $e) {
-    $truc = new Exception("tintin");
-    erreur();  
+    $erreur = new Exception("erreur");
+    erreur($erreur);  
 }

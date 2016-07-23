@@ -37,7 +37,7 @@ class GPS {
     /**
      * Renvoi la distance en mètres
      */
-    public function calculerDistance(GPS $pointGPS) {
+    public function calculerDistance($pointGPS) {
         $earth_radius = 6378137;   
         
         $rlo1 = deg2rad($this->longitude);

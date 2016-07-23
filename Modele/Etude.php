@@ -1,6 +1,6 @@
 <?php
 
-include 'Modele/Modele.php';
+include 'Modele.php';
 /**
  * Description of Etude
  *
@@ -48,6 +48,9 @@ class Etude extends Modele {
     }
     function getDatePrelev() {
         return $this->datePrelev;
+    }
+    function getDatePrelevFormatFr() {
+        return date_format(date_create($this->datePrelev),"d/m/Y");
     }
     function getFinEtude() {
         return $this->finEtude;
