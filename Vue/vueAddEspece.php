@@ -79,6 +79,7 @@ while ($donnees = $req->fetch()) {
             <tr>
                 <th>Espèce</th>
                 <th>Quantité</th>
+                <th>Changer quantité</th>
                 <th>Supprimer</th>
             </tr>
             <?php
@@ -86,10 +87,22 @@ while ($donnees = $req->fetch()) {
         }
         ?> <tr>
             <td><?= $donnees['nomEspece'] ?></td>
-            <td><form class="form-inline" method= "post" action="index.php?action=ajout_quantite&espece=<?php echo $donnees['idEspece']; ?>&id_etude=<?= $idEtude ?>&zone=<?php echo $donnees['idZone']; ?>">
-                    <input class="form-control" type="number" name="quantite" id="quantite" value="<?= $donnees['quantite'] ?>"/><input class="btn btn-info" type="submit" value="Modifier"/></form></td>
-            <td><a class="btn btn-info" href="index.php?action=sup_espece_zone&espece=<?php echo $donnees['idEspece']; ?>&zone=<?php echo $donnees['idZone']; ?>">X</a></td>
-
+            <td><?= $donnees['quantite'] ?></td>
+            <td>
+                <form class="form-inline" 
+                      method= "post" 
+                      action="index.php?action=ajout_quantite&espece=<?= $donnees['idEspece'] ?>&id_etude=<?= $idEtude ?>&zone=<?= $donnees['idZone'] ?>">
+                    <input class="form-control input-cour" 
+                           type="number" min="0" step="1" 
+                           name="quantite" 
+                           id="quantite" />
+                    <button class="btn btn-info btn-special-left" type="submit" name="subtract_button" value="subtract_button"/>-</button>
+                    <button class="btn btn-info btn-special-right" type="submit" name="add_button" value="add_button"/>+</button>
+                </form>
+            </td>
+            <td>
+                <a class="btn btn-info" href="index.php?action=sup_espece_zone&espece=<?= $donnees['idEspece'] ?>&zone=<?= $donnees['idZone'] ?>">X</a>
+            </td>
         </tr>
         <?php
     }

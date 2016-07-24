@@ -11,8 +11,16 @@ try {
     die('Erreur : ' . $e->getMessage());
 }
 
+if (filter_input(INPUT_POST, "add_button", FILTER_SANITIZE_STRING)) {
+    $newQuantite = $quantite;
+} else if (filter_input(INPUT_POST, "subtract_button", FILTER_SANITIZE_STRING)) {
+   $newQuantite = -$quantite;
+} else {
+    $newQuantite = 0;
+}
+
 // On ajoute une entrée dans la table espece_zone
-$bdd->exec("UPDATE espece_zone SET quantite = '$quantite' WHERE idZone = '$zone' AND idEspece = '$espece'");
+$bdd->exec("UPDATE espece_zone SET quantite = quantite + '$newQuantite' WHERE idZone = '$zone' AND idEspece = '$espece'");
 
 // Redirection du visiteur vers la page précédente
 header("Location: index.php?action=add_espece&id_etude=$idEtude&id_zone=$zone");

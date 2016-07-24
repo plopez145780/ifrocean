@@ -21,3 +21,17 @@ body {
 .vert {
     background-color: greenyellow !important;
 }
+/*Champ formulaire*/
+
+button.btn-special-left{
+    border-radius: 4px 0 0 4px;
+}
+button.btn-special-right{
+    border-radius:0 4px 4px 0;
+}
+/*Utilisation d'une media query pour rigoler*/
+@media (max-width: 640px) {
+    .input-cour{
+        max-width: 75px;
+    }
+}
