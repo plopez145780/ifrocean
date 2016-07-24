@@ -22,10 +22,10 @@ class Modele {
     protected function executerRequete($sql, $params = null) {
         if ($params == null) {
             // exécution directe
-            $resultat = $this->getConnection()->query($sql);    
+            $resultat = $this->getConnection()->query($sql);
         } else {
             // requête préparée
-            $resultat = $this->getConnection()->prepare($sql);  
+            $resultat = $this->getConnection()->prepare($sql);
             $resultat->execute($params);
         }
         return $resultat;
@@ -70,7 +70,7 @@ class Modele {
                 $paramZone['nomZone'], new GPS($paramZone['latA'], $paramZone['longA']), new GPS($paramZone['latB'], $paramZone['longB']), new GPS($paramZone['latC'], $paramZone['longC']), new GPS($paramZone['latD'], $paramZone['longD']), $paramZone['surface'], $paramZone['validZone'], $paramZone['idZone'], $paramZone['idEtude']
         );
     }
-    
+
     public function getListeZone($idEtude) {
         $pdo = $this->getConnection();
         $req = $pdo->prepare("SELECT idZone, nomZone, latA, longA, latB, longB, latC, longC, latD, longD,"
@@ -85,7 +85,7 @@ class Modele {
         }
         return $zones;
     }
-    
+
     public function getListeZoneOpen($idEtude) {
         $pdo = $this->getConnection();
         $req = $pdo->prepare("SELECT idZone, nomZone, latA, longA, latB, longB, latC, longC, latD, longD,"
@@ -120,7 +120,7 @@ class Modele {
         }
         return $especes;
     }
-    
+
     public function getListeEspeceByEtude($idEtude) {
         $pdo = $this->getConnection();
         $req = $pdo->prepare("SELECT nomEspece, sum(quantite) AS quantiteT, sum(surface) AS surfaceT, "
@@ -137,7 +137,26 @@ class Modele {
         $especes = array();
         while ($espece = $req->fetch()) {
             $especes[] = new Espece(
-                    $espece['nomEspece'], $espece['quantite'], $espece['idZone'], $idEtude
+                    $espece['nomEspece'], $espece['quantite'], $espece['idZone'], $idEtude, $espece['densite']
+            );
+        }
+        return $especes;
+    }
+
+    public function getEspecesByIdZone($idZone) {
+        $pdo = $this->getConnection();
+        $req = $pdo->prepare('SELECT nomEspece, espece_zone.quantite, nomZone, surface, etudes.idEtude, '
+                . '(quantite/surface) AS densite FROM espece_zone '
+                . 'INNER JOIN especes ON especes.idEspece=espece_zone.idEspece '
+                . 'INNER JOIN zones ON espece_zone.idZone=zones.idZone '
+                . 'INNER JOIN etudes ON zones.idEtude=etudes.idEtude WHERE zones.idZone = :id'
+        );
+        $req->bindParam(":id", $idZone);
+        $req->execute();
+        $especes = array();
+        while ($espece = $req->fetch()) {
+            $especes[] = new Espece(
+                    $espece['nomEspece'], $espece['quantite'], $idZone, $espece['idEtude'], $espece['densite']
             );
         }
         return $especes;

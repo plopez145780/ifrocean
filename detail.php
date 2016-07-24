@@ -1,6 +1,6 @@
 <?php
 include_once 'Config/ConfigBDD.php';
-include_once './Modele/Etude.php';
+include_once 'Modele/Etude.php';
 
 $recup = $_GET['etude'];
 

@@ -1,34 +1,22 @@
 <?php
-require_once './Modele/Etude.php';
-
+require_once 'Modele/Etude.php';
 $idEtude = filter_input(INPUT_GET, "etude", FILTER_SANITIZE_NUMBER_INT);
-//$idZone = filter_input(INPUT_GET, "zone", FILTER_SANITIZE_NUMBER_INT);
 
 $bdd = new Modele();
-
 $etude = $bdd->getEtude($idEtude);
 $nomEtude = $etude->getNom();
 $villeEtude = $etude->getVille();
-$surfaceEtude = $etude->getSuperficie();
-
+$titre = $nomEtude . ' - ' . $villeEtude;
 $zones = $bdd->getListeZone($idEtude);
-
 $especes = $bdd->getListeEspeceByEtude($idEtude);
 
-
-/* Dans ma config Apache (mais inutile pour la creation, apparemment)
- * #Ajout header pour fichier KML de Google Map
-  AddType application/vnd.google-earth.kml+xml .kml
-  AddType application/vnd.google-earth.kmz .kmz
- */
-//header("Content-type: application/vnd.google-earth.kml+xml");
 header('Content-Type: application/xml');
-header('Content-Disposition: attachment; filename="downloaded.kml"');
+header('Content-Disposition: attachment; filename="' . $titre . '.kml"');
+echo '<?xml version="1.0" encoding="UTF-8"?>'
 ?>
-<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
     <Document>
-        <name><?= $nomEtude ?> - <?= $villeEtude ?>.kml</name>
+        <name><?= $titre ?>.kml</name>
         <StyleMap id="m_ylw-pushpin1">
             <Pair>
                 <key>normal</key>
@@ -70,13 +58,11 @@ header('Content-Disposition: attachment; filename="downloaded.kml"');
             </PolyStyle>
         </Style>
         <Folder>
-            <name><?= $nomEtude ?> - <?= $villeEtude ?></name>
+            <name><?= $titre ?></name>
             <open>1</open>
             <description>
-                <?= $surfaceEtude ?> m²
-                <?php foreach ($especes as $espece) : ?>
-                <?= $espece->getNom(); ?> : <?= $espece->getQuantite(); ?>
-                <?php endforeach; ?>
+                Superficie : <?= $etude->getSuperficie() ?> m²
+                Date : <?= $etude->getDatePrelevFormatFr() ?>
             </description>
             <Style>
                 <ListStyle>
@@ -89,15 +75,11 @@ header('Content-Disposition: attachment; filename="downloaded.kml"');
                 <Placemark>
                     <name><?= $zone->getNom(); ?></name>
                     <description>
-                        <?php
-                            //a revérifier, je ne suis pas sur que les valeurs soit les bonnes
-                            $idZ = $zone->getId();
-                            foreach ($especes as $espece) {
-                               if($espece->getIdZone() == $idZ){
-                                   echo $espece->getNom() . " : " . $espece->getQuantite() . "\n";
-                               }
-                            }   
-                        ?>
+                        Superficie : <?= $zone->getSurface() ?> m²
+                        <?php $especesZone = $bdd->getEspecesByIdZone($zone->getId());
+                        foreach ($especesZone as $especeZone) : ?>
+                            <?= $especeZone->getNom() . " : " .$especeZone->getQuantite() . " (densité : " . $especeZone->getDensite() . ")\r\n" ?>
+                        <?php endforeach; ?>
                     </description>
                     <styleUrl>#m_ylw-pushpin1</styleUrl>
                     <Polygon>

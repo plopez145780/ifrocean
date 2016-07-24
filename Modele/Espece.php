@@ -11,14 +11,17 @@ class Espece {
     private $quantite;
     private $idZone;
     private $idEtude;
-    
+    private $densite;
+
+
     //CONSTRUCTEUR
-    public function __construct($nom, $quantite, $idZone, $idEtude, $id = NULL) {
+    public function __construct($nom, $quantite, $idZone, $idEtude, $densite = NULL, $id = NULL) {
         $this->id = $id;
         $this->nom = $nom;
         $this->quantite = $quantite;
         $this->idZone = $idZone;
         $this->idEtude = $idEtude;
+        $this->densite = $densite;
     }
     
     //GETTER and SETTER
@@ -37,23 +40,10 @@ class Espece {
     function getIdEtude() {
         return $this->idEtude;
     }
-    function setId($id) {
-        $this->id = $id;
+    function getDensite() {
+        return $this->densite;
     }
-    function setNom($nom) {
-        $this->nom = $nom;
-    }
-    function setQuantite($quantite) {
-        $this->quantite = $quantite;
-    }
-    function setIdZone($idZone) {
-        $this->idZone = $idZone;
-    }
-    function setIdEtude($idEtude) {
-        $this->idEtude = $idEtude;
-    }
-
-        //METHODES
+    //METHODES
     
     
 }
