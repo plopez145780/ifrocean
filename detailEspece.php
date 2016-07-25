@@ -1,7 +1,7 @@
 <?php
 include_once 'Config/ConfigBDD.php';
-require_once './Modele/Etude.php';
-require_once './Modele/Zone.php';
+require_once 'Modele/Etude.php';
+require_once 'Modele/Zone.php';
 
 $idEtude = filter_input(INPUT_GET, "etude", FILTER_SANITIZE_NUMBER_INT);
 $idZone = filter_input(INPUT_GET, "zone", FILTER_SANITIZE_NUMBER_INT);
@@ -11,6 +11,7 @@ $nomEtudeBio = $etude->getNom();
 
 $zone = $bddAriane->getZone($idZone);
 $nomZoneBio = $zone->getNom();
+$superficie = $zone->getSurface();
 $title = "Détail de la zone : " . $nomZoneBio;
 ?>
 <!-- Le corps -->
@@ -33,7 +34,7 @@ $req->execute(array($idZone));
 ?>
 
 <h2><?= $title ?></h2>
-<p><b>Espèces prélevées sur une superficie de : </b><?php echo $zone->getSurface(); ?> m2</p>
+<p><b>Espèces prélevées sur une superficie de : </b><?= $superficie ?> m²</p>
 
 <?php
 // Affichage de chaque message
@@ -46,8 +47,8 @@ while ($donnees = $req->fetch()) {
         <table class="table table-striped">
             <tr>
                 <th>Nom</th>
-                <th>Quantité</th>
-                <th>Densité</th>
+                <th class="text-right">Quantité</th>
+                <th class="text-right">Densité</th>
             </tr>
             <?php
             $premier = false;

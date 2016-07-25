@@ -3,7 +3,7 @@
     $bdd = new Modele();
     $etude = $bdd->getEtude($idEtude);
     $nomEtude = $etude->getNom();
-    $title = $nomEtude . " :: Ajouter une zone"; 
+    $title = $nomEtude . " : Ajouter une zone"; 
     
     $nomZone = "";
 ?>
